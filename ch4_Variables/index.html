@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="nav_bar tran">
+      <a href="#1" class="tran">Variables</a>
+      <a href="#" class="tran">On a Dark</a>
+      <a href="#" class="tran">Desert</a>
+      <a href="#" class="tran">Highway</a>
+    </nav>
+    
+  </header>
+  <main>
+    <section id="1">
+      <pre>
+        <b>19. What are Variables?</b>
+
+            Variables are like containers
+            used for storing data values.
+
+        <b>20. Syntax Rules</b>
+
+        1. Can’t use <span>keywords</span> or <span>reserved</span> words
+        2. Can’t start with a number
+        3. No special characters other than <span>$ and _</span>
+        4. = is for assignment
+        5. ; means end of instruction.
+
+        Example : 
+
+        // Defining a number variable in js :-
+        
+              <span>let noOfStudents = 5;</span>
+
+
+        // Defining a String variable in js :-
+
+              <span>let welcomeMessage = "Welcome to the shit show";</span>
+
+        NOTE: let ==> It's a keyword.
+
+        // ; means end of instruction :--
+
+            let x = 2
+            let y = 3
+            console.log(x + y)    wil yield 5
+
+            let x = 2  let y = 3    console.log(x + y) 
+            Uncaught SynataxError: Unexpected identifier 'let'
+
+            Note: If every stmt is in a separate line then it will work but it's not recommended.
+
+            let x = 2; let y = 3;  console.log(x + y);    ==> This works.
+
+          <b>21. Updating Values</b><br>
+          1. Do not need to use<span> let </span>again.
+          2. Syntax: <span>variable = variable + 1</span>
+          3. Assignment Operator is used <span>=</span>
+          4. Short Hand Assignment Operators: <span>+=, -=, *=, /=, ++</span>
+
+
+                        <img src="varUpdate.png" alt="Updateing a Variable.">
+          
+          <b>23. Naming Conventions</b>
+
+                                <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*FDWZfGKTXzTlrORkbqi04w.png" alt="Naming Convention">
+
+            <span style="color: royalblue; font-size: 18px; text-decoration: underline;">camelCase</span><br>
+          • Start with a lowercase letter. Capitalize the first letter of each subsequent word.
+          • Example: <span>myVariableName</span>
+
+            <span style="color: royalblue; font-size: 18px; text-decoration: underline;">snake_case</span><br>
+
+          • Start with an lowercase letter. Separate words with underscore
+          • Example: <span>my_variable_name</span> 
+          
+            <span style="color: royalblue; font-size: 18px; text-decoration: underline;">Kebab-case</span><br>
+          • All lowercase letters. Separate words with hyphens. <span>Used for HTML and CSS</span>.
+          • Example: <span>my-variable-name</span>
+
+            <span style="color: royalblue; font-size: 18px; text-decoration: underline;">Note: Keep a Good and Short Name</span><br>
+          • Choose names that are descriptive but not too long. It should make it easy to understand the variable's purpose.
+          • Example: <span> age, firstName, isMarried</span>
+
+
+          <b>24. Ways to Create Variables</b>
+
+                                        <img src="waysToCreateVar.png">
+          <img src="https://media.licdn.com/dms/image/C4D22AQENMfotIiZ7nQ/feedshare-shrink_800/0/1675523071266?e=2147483647&v=beta&t=MfP4YlyJlVNlxQv_PeUeh78agDcWsxqkLjQjGlxInYo" alt="waysToCreateVar">
+
+          Note: 
+          <b style="color: royalblue; font-size: 18px; text-decoration: underline;">const</b>
+          <span>We use "const" to declare variables, which are constant. 
+                constant values, so we can't modify
+                It is recommended to declare variable as const till we don't know it has to be changed.
+                "const " can be accessed from within the delared block only. (like local variable)
+          </span>  
+          <b style="color: royalblue; font-size: 18px; text-decoration: underline;">var</b>
+          <span>"var is not used much, it's outdated."
+            var can be accessed from anywhere. (kinda global)
+          </span>
+
+
+          <h1>LEARN <span> eval </span> Method</h1>
+
+          
+
+      </pre>
+    </section>
+  </main>
+  <footer></footer>
+
+  <script>
+
+    // Variables
+
+    let welcomeMessage = 'Hello Dear';
+    console.log('Hello Dear');
+    console.log(welcomeMessage);
+
+
+    let bagSummary = `Your final Myntra Bag amount is ₹${Math.round(((15599 - (10/100 * 15599)) - 272 + (2499 - (41/100 * 2499)) - -29 + 25 + 20) * 118 / 100)}`;
+
+    console.log(bagSummary);
+
+    //  19. What are Variables and how to use variables ?
+    // 20. Syntax Rules
+
+    console.log('\n\n19. What are Variables and how to use variables ?\n\n')
+
+
+    let bagValue = Math.round(((15599 - (10/100 * 15599)) - 272 + (2499 - (41/100 * 2499)) - 29 + 25 + 20) * 118 / 100);
+
+    bagSummary = `Your FULL N FINAL Myntra Bag amount is ₹${bagValue}` ;
+    console.log(bagSummary);
+
+    console.log('dataType of bagSummary is: ' +  typeof bagSummary);
+
+    let bagPrice = (15599 - (10/100 * 15599)) - 272;
+
+    let jeansPrice = (2499 - (41/100 * 2499)) - 29;
+
+    bagValue = Math.round((jeansPrice  + bagPrice + 25 + 20) * 118/100);
+
+    bagSummary = `Your final Myntra Bag amount is ₹${bagValue}` ;
+    console.log(bagSummary);
+
+    //  21. Updating Values
+
+    console.log('\n\nUPDATING variables:---\n\n')
+
+    let a = 5;
+    let b = 6;
+    let c = a + 4;
+    console.log(c);
+
+    c = b + 2;
+    console.log(c);
+
+
+    console.log('\n\Shorthand assignment operators:---\n\n')
+    let i = 5;
+    console.log('console.log(i) : ' + i);
+    i = i + 5;
+    console.log('console.log(i = i + 5) : ' + i);
+    console.log('console.log(i = i + 10) : ' + (i = i + 10));
+
+
+    // j = j + 5;
+    // j+=5;
+    let j = 5;
+    console.log('\n\n' + 'let j = 5;');
+    console.log('j+=5;');
+    console.log('console.log(j += 5) : ' + (j += 5));
+
+
+    // Example:-
+    console.log('\n\nExample:--\nlet money = 1;\n\nmoney += 5;    // money = 6\nmoney -= 2;    // money = 4\nmoney *= 3;    // money = 12\nmoney /= 4;    // money = 3\nmoney ++;      // money = 4')
+
+    let money = 1;
+
+    money += 5;    // money = 6
+    money -= 2;    // money = 4
+    money *= 3;    // money = 12
+    money /= 4;    // money = 3
+    money ++;      // money = 4
+
+    // 24. Ways to Create Variables:--
+    // let const var
+
+    // let pi = 3.14159265359;   // constant values
+    const pi = 3.14159265359;   // constant values, so we can't modify
+
+    // Example : pi = 2; // Gives Syntax error
+
+    let radius = 4;
+    console.log(pi * radius * radius);
+
+
+    
+
+  </script>
+</body>
+</html>
