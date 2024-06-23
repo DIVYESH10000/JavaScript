@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>if-else-boolean</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <nav class="nav_bar">
+      <a href="#1">25.What are Booleans</a>
+      <a href="#2">26.Comparison Operators</a>
+      <a href="#3">27.if-else</a>
+      <a href="#4">28.Logical Operator</a>
+      <a href="#5">29.Scope</a>
+      <a href="#6">30.Truthy and Falsy Values</a>
+      <a href="#7">31.If alternates</a>
+    </nav>
+  </header>
+  <main>
+    <pre>
+      <b id="1"  class="bold">25.What are Booleans</b><br>
+      1. Data Type: Booleans are a basic data type in JavaScript.
+      2. Two Values: Can only be true or false.
+      3. ‘true’ is a String not a Boolean.
+
+      <b id="2" class="bold">26. Comparison Operators</b><br>
+      <span>Equality</span>
+        • == Checks value equality.
+        • === Checks value and type equality.
+      <span>Inequality</span>
+        • != Checks value inequality.
+        • !== Checks value and type inequality.
+      <span>Inequality</span>
+        • > Greater than.
+        • < Less than.
+        • > = Greater than or equal to.
+        • < = Less than or equal to.
+        ------------------------------------------------------------------
+       <span>Note:  Order of comparison operators is less than arithmetic operators</span>
+
+       Examples:--
+
+       console.log(typeof (6 > 9));     // boolean
+       console.log(typeof true);        // boolean
+       console.log(typeof 'true');      // string
+   
+   
+       console.log(5 == 5);           // true
+
+       console.log(5 == '5');         // true, as == only compares value. Either it will convert int 5 to string 5 or vice versa the compare them.
+
+       console.log(5 == 5.0);         // true
+       console.log(5 == 4);           // false
+   
+       console.log(5==='5.0')           // false as === compares the value as well as typeof value.
+
+      <b id="3"  class="bold">27. if-else</b><br>
+
+      1. Syntax: Uses if () {} to check a condition.
+      2. What is if: Executes block if condition is true, skips if false.
+      3. What is else: Executes a block when the if condition is false.
+      4. Curly Braces can be omitted for single statements, but not recommended.
+      
+      5. If-else Ladder: Multiple if and else if blocks; only one executes.
+      6. Use Variables: Can store conditions in variables for use in if statements.
+
+      Examples:---
+
+      // Case 1
+    console.log("Checking if you can drive: ");
+    if (21 > 18) {
+      console.log("You can drive")
+    }
+
+    // Case 2
+    console.log("\n\nChecking if you can drive: ");
+
+    let age = 1;
+
+    if(age >= 18) {
+      console.log(`Darling you sure can drive, as your age is ${age} years\nwhich exceeds the min eligibility criteria i.e. 18 years.`);
+    }
+    else if (age < 18){
+      console.log(`Darling you sure can't drive, as your age is ${age} years.\nI suggest riding bicycle. Do enjoy your time while you can.`);
+    }
+    else if (age >=65) {
+      console.log(`Sir/Mam,\nYou can't drive until you get a medical fitness certificate from RTO,\nas you're a senior citizen.`)
+    }
+    else {
+      console.log('get lost')
+    }
+    
+    <span>// For single statements, can skip braces but it's not recommended.<br>   // else stmt in the end is not mandatory.<br>   // Note : Only 1 stmt is true in the whole ladder, the moment true stmt executes, rest is skipped.</span>
+          
+          
+      
+
+
+     <span> Note: Check Project Cricket Game.</span>
+
+
+      <b id="4"  class="bold">28. Logical Operators</b>
+
+      <img src="logicGates.png" alt="Logic Gates">
+
+      1. Types: && (AND), || (OR), ! (NOT)
+      2. AND (&&): <span> All conditions must be true for the result to be true</span>.
+      3. OR (||): <span> Only one condition must be true for the result to be true</span>.
+      4. NOT (!): Inverts the Boolean value of a condition.
+      5. Lower Priority than Math and Comparison operators.
+
+
+      Example:--
+
+      let yourAge = 32;
+
+      if(yourAge > 25 && yourAge < 30){
+        console.log('You still can become a  under 30.')
+      }
+      else if (yourAge > 31 || yourAge < 35){
+        console.log(`Everyday work like it's the last sday of your life.`)
+      }
+
+
+      <b id="5"  class="bold">29. Scope</b>
+
+      <img src="https://media.licdn.com/dms/image/C4D22AQED9ETMormSTw/feedshare-shrink_2048_1536/0/1672834148668?e=2147483647&v=beta&t=yazMl0SZ0wM4sBj1WrhcAbEjgMdOUpyUfA3klsASB6A" alt="scopeOfVar">
+      
+      1. Any variable created inside {} will remain inside {}.
+
+      2. Variable can be redefined inside {}.
+
+      3." Var" does not follow scope.
+
+      4. Global Scope: Accessible everywhere in the code.
+
+      5. Block Scope: Limited to a block, mainly with let and const.
+
+      6. Declare variables in the narrowest scope possible.
+
+      Example : 
+
+      console.log('\n\nScope of Variables: \n\n')
+
+      // Case 1
+      let _age = 34;
+      if ( _age > 18 ){
+        let userMessage = 'You can drive';
+        console.log(userMessage)
+      } else {
+        let userMessage = 'Use a bicycle';
+        console.log(userMessage)
+      }
+      // console.log(userMessage) ;   ReferenceError : Undefined User reference
+  
+      // Case 2
+      console.log('\nIf we have to use variable outside block,  we should decalre it outside block\n')
+  
+      let $age = 12;
+      // var userMessage;
+      // var baller;
+  
+  
+      // if ( $age > 18 ){  
+      //   var userMessage = 'You can drive';
+      //   console.log(userMessage);
+  
+        
+      // } else {
+      //   var userMessage = 'Use a bicycle';
+      //   console.log(userMessage);
+  
+      // }
+      // console.log(userMessage);
+      // console.log(baller);
+  
+      //  var DOES NOT FOLLOW SCOPE
+  
+      let userMessage;
+      let baller;
+  
+  
+      if ( $age > 18 ){  
+        let userMessage = 'You can drive'; // userMessage is Local Variable here
+        console.log(userMessage);
+  
+        
+      } else {
+        let userMessage = 'Use a bicycle';  // userMessage is Local Variable here
+        console.log(userMessage);
+  
+      }
+      console.log(userMessage);
+      console.log(baller); // If you declare and don't assign value then we get : undefined
+  
+  
+      // global scope
+  
+      console.log('\n\n ANY variable DECLARED OUTSIDE A BLOCK CAN BE USED INSIDE A BLOCK,\nBUT ANY variable decalred inside a block can only be used inside a block.');
+  
+      let Message; 
+    
+      if ( $age > 18 ){  
+        let Message = 'You can drive'; // userMessage is Local Variable here
+        // console.log(Message); NO NEED as Message ais Global Variable
+  
+      } else {
+        let Message = 'Use a bicycle';  // userMessage is Local Variable here
+        // console.log(Message); NO NEED as Message ais Global Variable
+      }
+      console.log(Message); // Global Scope
+
+      <b id="6"  class="bold">30. Truthy and Falsy Values</b><br>
+
+      1. Falsy Values: <span>0, null, undefined, false, NaN, "" (empty string)</span>
+
+      2. Truthy Values: All values <span>not</span> listed as falsy.
+
+      3. Used in <span>conditional</span> statements like if.
+
+      4. <span>Non-boolean</span> values are auto-converted in logical operations.
+
+      5. Be <span>explicit</span> in <span>comparisons</span> to avoid unexpected behaviour.
+
+      Example:--
+
+      // When we assign VALUES where BOOLEAN was supposed to be used.
+
+      // let __age = 21;  // Truthy
+      // let __age = 0;   // Falsy ------------ 0
+      // let __age;       // Falsy ------------ Undefined (When Value not defined.)
+      // let __age = '';  // Falsy ------------ Empty String
+      // let __age = null;// Falsy ------------ null (When we specifically don't wanna assign value.s)
+      let __age = NaN;    // Falsy ------------ NaN (Illogical : 5 / ice-cream)
+  
+      if (__age) {
+        console.log('You have  a valid age');
+      } else {
+        console.log(`You're an Avatar`);
+      }
+      console.log(__age); <br><br>
+
+
+      <b id="7" class="bold">31. If alternates</b><br>
+
+      1. Ternary Operator: <span>condition ? trueValue : falseValue</span>
+                  Quick one-line if-else.
+                  
+      2. Guard Operator: <span>value || defaultValue</span>
+                  Use when a fallback value is needed.
+
+      3. Default Operator: <span>value ?? fallbackValue</span>
+                  Use when you want to consider only null and undefined as falsy.
+
+      4. Simplifies conditional logic.
+
+      5. Use wisely to maintain readability.
+
+      Example:-- 
+
+      
+    console.log('\n\n31. If - alternatives\n');
+
+    console.log('Ternary Operator\n\n');
+
+    // let $$age = 21;
+    // let $$result;
+    // if($$age > 18){
+    //   $$result = 'Adult';
+    // } else {
+    //   $$result = 'Kid';
+    // }
+    // console.log($$result);
+
+
+    //     condition         ? trueValue : falseValue;
+    let $$age;
+    let $$result = $$age > 18  ?  'Adult'  :   'Kid';
+
+    console.log('\n\nGuard Operator');
+    // Whevever there's Falsy value, default will take it's place.              
+
+    let _$age ;
+    //             value || defaultValue
+    let finalAge = _$age || 18;
+
+    console.log(_$age);
+    console.log(finalAge);
+
+    console.log('\n\nDefault Operature\n')
+    // Whevever there's Falsy value EXCEPT null and undefined, fallback will take it's place.  
+
+    let $_age ;
+    //             value  ?? fallbackValue
+    let final_Age = _$age ??   18;
+
+    console.log($_age);
+    console.log(final_Age);
+    
+
+
+
+    </pre>
+  </main>
+  <script>
+
+    //   26. Comparison Operators
+/*
+    console.log(typeof (6 > 9));
+    console.log(typeof true);
+    console.log(typeof 'true');
+
+
+    console.log(5 == 5);  
+    console.log(5 == '5');  // true, as == only compares value. Either it will convert int 5 to string 5 or vice versa the compare them.
+    console.log(5 == 5.0);  
+    console.log(5 == 4);
+
+    console.log(5==='5.0') // === compares the value as well as typeof value, thus false.
+*/
+
+    //  27. if-else
+
+
+    // Case 1
+    console.log("Checking if you can drive: ");
+    if (21 > 18) {
+      console.log("You can drive")
+    }
+
+    // Case 2
+    console.log("\n\nChecking if you can drive: ");
+
+    let age = 1;
+
+    if(age >= 18) {
+      console.log(`Darling you sure can drive, as your age is ${age} years\nwhich exceeds the min eligibility criteria i.e. 18 years.`);
+    }
+    else if (age < 18){
+      console.log(`Darling you sure can't drive, as your age is ${age} years.\nI suggest riding bicycle. Do enjoy your time while you can.`);
+    }
+    else if (age >=65) {
+      console.log(`Sir/Mam,\nYou can't drive until you get a medical fitness certificate from RTO,\nas you're a senior citizen.`)
+    }
+    else {
+      console.log('get lost')
+    }
+    
+    //Note : Only 1 stmt is true in the whole ladder, the moment true stmt executes, rest is skipped.
+
+    // 28. Logical Operators
+    let yourAge = 32;
+
+    if(yourAge > 25 && yourAge < 30){
+      console.log('You still can become a  under 30.')
+    }
+    else if (yourAge > 31 || yourAge < 35){
+      console.log(`Everyday work like it's the last sday of your life.`)
+    }
+
+    // 29. Scope
+
+    console.log('\n\nScope of Variables: \n\n')
+
+    // Case 1
+    let _age = 34;
+    if ( _age > 18 ){
+      let userMessage = 'You can drive';
+      console.log(userMessage)
+    } else {
+      let userMessage = 'Use a bicycle';
+      console.log(userMessage)
+    }
+    // console.log(userMessage) ;   ReferenceError : Undefined User reference
+
+    // Case 2
+    console.log('\nIf we have to use variable outside block,  we should decalre it outside block\n')
+
+    let $age = 12;
+    // var userMessage;
+    // var baller;
+
+
+    // if ( $age > 18 ){  
+    //   var userMessage = 'You can drive';
+    //   console.log(userMessage);
+
+      
+    // } else {
+    //   var userMessage = 'Use a bicycle';
+    //   console.log(userMessage);
+
+    // }
+    // console.log(userMessage);
+    // console.log(baller);
+
+    //  var DOES NOT FOLLOW SCOPE
+
+    let userMessage;
+    let baller;
+
+
+    if ( $age > 18 ){  
+      let userMessage = 'You can drive'; // userMessage is Local Variable here
+      console.log(userMessage);
+
+      
+    } else {
+      let userMessage = 'Use a bicycle';  // userMessage is Local Variable here
+      console.log(userMessage);
+
+    }
+    console.log(userMessage);
+    console.log(baller); // If you declare and don't assign value then we get : undefined
+
+
+    // global scope
+
+    console.log('\n\n ANY variable DECLARED OUTSIDE A BLOCK CAN BE USED INSIDE A BLOCK,\nBUT ANY variable decalred inside a block can only be used inside a block.');
+
+    let Message; 
+  
+    if ( $age > 18 ){  
+      let Message = 'You can drive'; // userMessage is Local Variable here
+      // console.log(Message); NO NEED as Message ais Global Variable
+
+    } else {
+      let Message = 'Use a bicycle';  // userMessage is Local Variable here
+      // console.log(Message); NO NEED as Message ais Global Variable
+    }
+    console.log(Message); // Global Scope
+
+    // 30. Truthy and Falsy Values
+
+    console.log('\n\n30. Truthy and Falsy Values');
+
+    // When we assign VALUES where BOOLEAN was supposed to be used.
+
+    // let __age = 21;  // Truthy
+    // let __age = 0;   // Falsy ------------ 0
+    // let __age;       // Falsy ------------ Undefined (When Value not defined.)
+    // let __age = '';  // Falsy ------------ Empty String
+    // let __age = null;// Falsy ------------ null (When we specifically don't wanna assign value.s)
+    let __age = NaN;    // Falsy ------------ NaN (Illogical : 5 / ice-cream)
+
+    if (__age) {
+      console.log('You have  a valid age');
+    } else {
+      console.log(`You're an Avatar`);
+    }
+    console.log(__age); 
+
+    // 31. If - alternatives
+
+    console.log('\n\n31. If - alternatives\n');
+
+    console.log('Ternary Operator\n\n');
+
+    // let $$age = 21;
+    // let $$result;
+    // if($$age > 18){
+    //   $$result = 'Adult';
+    // } else {
+    //   $$result = 'Kid';
+    // }
+    // console.log($$result);
+
+
+    //     condition         ? trueValue : falseValue;
+    let $$age;
+    let $$result = $$age > 18  ?  'Adult'  :   'Kid';
+
+    console.log('\n\nGuard Operator');
+    // Whevever there's Falsy value, default will take it's place.              
+
+    let _$age ;
+    //             value || defaultValue
+    let finalAge = _$age || 18;
+
+    console.log(_$age);
+    console.log(finalAge);
+
+    console.log('\n\nDefault Operature\n')
+    // Whevever there's Falsy value EXCEPT null and undefined, fallback will take it's place.  
+
+    let $_age ;
+    //             value  ?? fallbackValue
+    let final_Age = _$age ??   18;
+
+    console.log($_age);
+    console.log(final_Age);
+
+
+    
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
