@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions</title>
+  <link rel="stylesheet" href="functions.css">
+</head>
+<body>
+  <header>
+    <nav class="nav_bar">
+      <a href="#1">32. What are Functions</a>
+      <a href="#2">33. Function Syntax</a>
+      <a href="#3">34. Return Statement</a>
+      <a href="#4">35. Function Parameters</a>
+    </nav>
+  </header>
+  <main>
+    <pre>
+      <h2>LEARNING FUNCTIONS MEANWHILE IMPROVING CRICKET GAME USING FUNCTION CONCEPTS</h2><br>
+      <b id="1" class="bold">32. What are Functions</b><br>
+
+          function greet() {
+              console.log("hello World!");
+          }
+
+      <img src="https://www.programiz.com/sites/tutorial2program/files/javascript-create-function.png" alt="functionSyntax">
+
+      
+      <img src="fun.png">
+
+
+      1. Definition: Blocks of reusable code.
+
+      2. DRY Principle: "Don't Repeat Yourself" it Encourages code reusability.
+      
+      3. Usage: Organizes code and performs specific tasks.
+
+      4. Naming Rules: Same as variable names: camelCase.
+
+      5. Example: ”Beta Gas band kar de".
+      
+
+      <b id="2" class="bold">33. Functions Syntax</b>
+
+      <img src="funSyntax.png" style="width: 600px;" alt="functionSyntax">
+
+
+      1. Use function keyword to declare.
+
+      2. Follows same rules as variable names.
+
+      3. Use () to contain parameters.
+      
+      4. Invoke by using the function name followed by ().
+      
+      5. Fundamental for code organization and reusability.
+
+      <b id="3" class="bold">34. Return statement</b>
+
+          <img src="https://media.licdn.com/dms/image/C4D22AQGn6fjV9kOkeQ/feedshare-shrink_800/0/1667477239298?e=2147483647&v=beta&t=UjPbwXun2ss-bAgQBxuXQ1-5cdk9fDMkqex6zZhLg9M" alt="returntype">
+
+      1. Sends a value back from a function.
+
+      2. Example: "Ek glass paani laao"
+
+      3. What Can Be Returned: Value, variable, calculation, etc.
+
+      4. Return ends the function immediately.
+
+      5. Function calls make code jump around.
+
+      6. Prefer returning values over using global variables.
+
+      Examples:
+
+      console.log('\n\n34. Return statement\n');
+
+
+    // Example 1
+    function generateRandomMove () {
+      let random = Math.random();
+      let randomMove = random  * 3;
+      return randomMove;
+    }
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+
+    // Example 2
+
+    function determineDriveStatus() {
+      let age = 21;
+      if (age === undefined) {
+        return 'You are an Avatar';
+      }
+      console.log(`Checking drive status`);
+      if (age > 18){
+        return '\n\nYou sure can drive sir/mam.';
+      } else {
+        return `\n\nHell no, you can't drive.`;
+      }
+    }
+
+    console.log(determineDriveStatus());
+
+
+
+      <b id="4" class="bold">35. Function Parameters</b>
+
+      <img src="funcParamReturn.png" alt="parameter">
+
+          1. Input values that a function takes.
+
+          2. Parameters put value into function, while return gets value out.
+
+          3. Example: "Ek packet dahi laao”
+          
+          4. Naming Convention: Same as variable names.
+
+          5. Parameter vs Argument.
+
+          6. Examples: alert, Math.round, console.log are functions we have already used.
+
+          7. Multiple Parameters: Functions can take more than one.
+
+          8. Default Value: Can set a default value for a parameter.
+
+          Examples:
+
+          // 35. Function Parameters
+          console.log('\n\n35. Function Parameters\n\n');
+      
+          function sum (a, b) {   // Getting Parameters
+            let sum = a + b;
+            return sum;
+          }
+      
+      
+          let netS;
+          console.log(netS = sum(1, 8));
+      
+          let netSum = sum(1, 8);
+          console.log(netSum);
+          
+          console.log(sum(3, 4)); // Passing Argument
+          console.log(sum(30, 40));
+          console.log(sum(39, 49));
+          console.log(sum(300, 400));
+          console.log(sum(32, 42));
+      
+          <b>// default value for a parameter</b>
+          function greeting (name = 'Haley') {    // Here 'Haley'  is default value.
+            console.log(`Sup, ${name}`);
+          }
+      
+          // Case 1 : When we're passing an argument
+          greeting('Kaley');
+      
+          // Case 2 : When we're NOT passing an argument
+          greeting();
+
+
+            
+      
+    </pre>
+  </main>
+  <footer>
+    Persistence and Resilience for Greatness and Success.
+  </footer>
+  <script>
+    // Functions
+    console.log('\nFunctions\n\n\n\n');
+
+    function greet( ){
+      console.log('Hello World!');
+    }
+
+    // function call
+    greet();
+
+    //  Example 2
+
+    let age = 21;
+    function printAge(){
+      console.log(`Your age is ${age}`);
+    }
+
+    printAge();
+
+    age = 22;
+    printAge();
+
+    age = 29;
+    printAge();
+
+
+    // 34. Return statement
+    console.log('\n\n34. Return statement\n');
+
+
+    // Example 1
+    function generateRandomMove () {
+      let random = Math.random();
+      let randomMove = random  * 3;
+      return randomMove;
+    }
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+    console.log(generateRandomMove());
+
+    // Example 2
+
+    function determineDriveStatus() {
+      let age = 21;
+      if (age === undefined) {
+        return 'You are an Avatar';
+      }
+      console.log(`Checking drive status`);
+      if (age > 18){
+        return '\n\nYou sure can drive sir/mam.';
+      } else {
+        return `\n\nHell no, you can't drive.`;
+      }
+    }
+
+    console.log(determineDriveStatus());
+
+    // 35. Function Parameters
+    console.log('\n\n35. Function Parameters\n\n');
+
+    function sum (a, b) {   // Getting Parameters
+      let sum = a + b;
+      return sum;
+    }
+
+
+    let netS;
+    console.log(netS = sum(1, 8));
+
+    let netSum = sum(1, 8);
+    console.log(netSum);
+    
+    console.log(sum(3, 4)); // Passing Argument
+    console.log(sum(30, 40));
+    console.log(sum(39, 49));
+    console.log(sum(300, 400));
+    console.log(sum(32, 42));
+
+    // default value for a parameter
+    function greeting (name = 'Haley') {    // Here 'Haley'  is default value.
+      console.log(`Sup, ${name}`);
+    }
+
+    // Case 1 : When we're passing an argument
+    greeting('Kaley');
+
+    // Case 2 : When we're NOT passing an argument
+    greeting();
+
+
+
+  </script>
+</body>
+</html>

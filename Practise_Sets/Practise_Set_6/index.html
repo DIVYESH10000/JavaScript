@@ -7,5 +7,51 @@
 </head>
 <body>
   
+
+  <script>
+  
+  // Function 1
+  let res =  evenOdd(13);
+  console.log(`Entered numbers is : ${res}\n\n`);
+
+// Function 2
+  let large = largerNum(100, 20555);
+  console.log(large);
+
+
+// Function 3
+   let f = tempConversion (100);
+   console.log(`Converted to Fahrenheit : ${f}`);
+
+
+
+  // Function evenOdd
+  function evenOdd (num) {
+    return num % 2 === 0 ? 'Even' : 'Odd';
+  }
+
+  // Function largerNum
+  function largerNum (num1, num2) {
+    return num1 > num2 ? `${num1} is larger` : `${num2} is larger`;
+  }
+
+  // Function tempConversion
+  function tempConversion (celcius) {
+    let fahrenheit
+    return fahrenheit = ((9 / 5) * celcius) 
+    + 32;
+  }
+  </script>
 </body>
 </html>
+
+<!-- 
+
+1. Create a method to check if a number is odd or even.
+2. Create a method to return larger of the two numbers.
+
+3. Create Method to convert Celsius to Fahrenheit
+
+F = (9/5) * C + 32
+
+-->
