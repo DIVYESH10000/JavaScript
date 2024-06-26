@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket-Game</title>
+  <link rel="stylesheet" href="CricketWithObject.css">
+</head>
+<body>
+  <header>
+    <h1>Bat Ball Stump Game</h1>
+    <!-- We'll move method for showing result into score Object -->
+  </header>
+  <main>
+    <div class="buttonContainer">
+      
+      <button class="button" onclick="
+
+      let computerChoice =  gernerateComputerChoice();
+      let resultMsg = getResult('Bat', computerChoice);
+      showResult('Bat', computerChoice, resultMsg);
+        ">Bat</button>
+
+      <!-- Ball Button -->
+      <button class="button" onclick="
+
+      computerChoice =  gernerateComputerChoice();
+      resultMsg = getResult('Ball', computerChoice);
+      showResult('Ball', computerChoice, resultMsg);
+      ">Ball</button>
+
+      <!-- Stump Button -->
+      <button class="button" onclick="
+
+      computerChoice =  gernerateComputerChoice();
+      resultMsg = getResult('Stump', computerChoice);
+      showResult('Stump', computerChoice, resultMsg);
+      ">Stump</button>
+
+    </div>
+  </main>
+  <footer>
+    <hr><br> Math.random() : It's a math function which we can use to generate <span>random</span> computer choices. <br>Math.randon( ) :<span> By default it gives random numbers between 0 and 1.</span><br>Logic : If something is in range of 0 to 1, and I multiply it with 3. <span>Then range becomes from 0 to 3</span>.</span><hr>
+ </footer>
+  <script>
+    // document.querySelector('#b1').innerText = 'Bat';
+    // document.querySelector('#b2').innerText = 'Ball';
+    // document.querySelector('#b3').innerText = 'Stump';
+
+    // Object : We're using object to keep track of games result
+
+    let score = {
+      win : 0,
+      lost : 0,
+      tie : 0,
+      displayScore : function() {
+        return `No. of matches won  : ${score.win}
+        Lost :  ${score.lost}
+        Tie  :  ${score.tie}`;
+      }
+    };
+
+
+
+    // Function 1 : This will generate random number between 0 and 3
+    function gernerateComputerChoice () {
+      let randomNumber = Math.random() * 3;     // Local variable
+      let Choice;
+      if (randomNumber <= 1){
+        return 'Bat';
+      } else if ( randomNumber <= 2){
+        return 'Ball';
+      } else if (randomNumber <= 3){
+        return 'Stump';
+      }     
+    }
+    
+
+    // Function 2 : Comparing userMove and computerMove
+    function getResult(userMove, computerMove) {
+      if(userMove === 'Bat') {
+
+        if (computerMove === 'Ball') {
+          score.win++ ;
+          return 'User won,  yay !!!';
+        } else if (computerMove === 'Bat') {
+          score.tie++ ;
+          return  `It's a tie, please try again.`;
+        } else if (computerMove === 'Stump') {
+          score.lost++ ;
+          return `Computer won the game, better luck next time.`;
+        }
+
+      } else if (userMove === 'Ball') {
+
+          if (computerMove === 'Ball'){
+            score.tie++ ;
+            return `It's a tie, please try again.`;
+          } else if(computerMove === 'Bat'){
+            score.lost++ ;
+            return  `Computer won the game, better luck next time.`;
+          } else if(computerMove === 'Stump'){
+            score.win++ ;
+            return 'User won,  yay !!!';
+          }
+
+      } else {
+
+        if (computerMove === 'Stump'){
+          score.tie++ ;
+          return `It's a tie, please try again.`;
+        } else if(computerMove === 'Bat'){
+          score.win++ ;
+          return 'User won,  yay !!!';
+        } else if(computerMove === 'Ball'){
+          score.lost++ ;
+          return  `Computer won the game, better luck next time.`;
+        }
+
+      }
+    }
+
+    // Function : Function to show result
+    function showResult (userMove, computerMove, resultMsg) {
+      console.log(score);
+      alert(`\n\nYou have choosen : ${userMove}.\nComputer choice is : ${computerMove}\n${resultMsg}
+      
+      ${score.displayScore()}`);    // CHANGED
+    }
+
+  </script>
+</body>
+</html>

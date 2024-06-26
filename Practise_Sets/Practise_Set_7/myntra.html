@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Set 7</title>
+  <style>
+    h1 {
+      margin: 15px 0 10px;
+      font-size: 45px;
+      font-family: "bold";
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+    <h1>Cashmere Boxers</h1>
+    <h2 style="font-family: bold; font-size: 35px;">Nice Laundry’s $1,400 cashmere boxers are embroidered with a flying pig in thread that’s coated with 24-karat gold.</h2>
+    <img src="https://robbreport.com.au/application/assets/2019/04/nice-laundry-cashmere-shorts-main.jpg" >
+
+
+
+
+  <h1>INTRODUCTION
+    6007G - CALATRAVA
+    SELF-WINDING</h1>
+  <h2>
+    Patek Philippe is expanding its Calatrava collection with three new white gold timepieces featuring a modern, graphic style.
+
+                                                                            Price : On request
+
+
+  </h2>
+                                                                                                    <img  src="https://static.patek.com/images/articles/face_white/350/6007G_011_1.jpg">
+  </pre>
+
+  <script>
+
+  // 1. Create object to represent a product from Myntra.
+
+
+
+  let product1 = {
+    nameOfProduct : 'Cashmere Boxers',
+    productDescription : 'The $1400-a-pair underwear are cut from pure cashmere and embroidered with gold thread.',
+    priceOfProduct : `$${1400}`,
+  };
+
+
+
+
+  // 2. Create an Object with two references and log changes to one object by changing the other one.
+
+
+  let objWithRef1 = {
+    studName : 'Space',
+    dept : 'IT',
+    'delivery-time' : '2 Days',
+  };
+
+  let objWithRef2 = objWithRef1;    // Only Reference of objWithRef1 i.e. {studName, dept} will be copied to objWithRef2
+
+  objWithRef2.dept = 'Cyber Security';
+
+  console.log(objWithRef1);
+
+
+  // 3. Use bracket notation to display delivery-time.
+
+
+  product1['delivery-time'] = '5 days';
+  console.log(product1['delivery-time']);
+
+
+
+  // 4. Given an object {message: 'good job', status: 'complete'}, use de-structuring to create two variables message and status.
+
+  let greet = {
+    message : 'good job',
+    status : 'complete',
+  };
+
+
+  console.log('\n\nDe-structuring\n\n');
+  let {message, status} = greet;
+
+  console.log(message);
+  console.log(status);
+
+  
+
+  // 5. Add function isIdenticalProduct to compare two product objects.
+
+  let product2 = {
+    nameOfProduct : 'PATEK PHILIPPE CALATRAVA',
+    productDescription : 'Only for Godly Rich',
+    priceOfProduct : `$ On request`,
+  };
+  let product3 = {
+    nameOfProduct : 'PATEK PHILIPPE CALATRAVA',
+    productDescription : 'Only for Godly Rich',
+    priceOfProduct : `$ On request`,
+  };
+
+  function isIdenticalProduct (product1, product2) 
+  { 
+    // Checking that we have received correct Parameter
+    if(typeof product1 !== 'object' || typeof product2 !== 'object') {
+      console.warn('Parameter passed is not an object.');
+      return false;
+    }
+
+    // First we check if both references are pointing to same object, if yes then true
+    if (product1 === product2) {
+      return true;
+    }
+
+    // Comparing values
+
+    if(product1.nameOfProduct === product2.nameOfProduct && 
+    product1.productDescription === product2.productDescription &&
+    product1.priceOfProduct === product2.priceOfProduct) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  console.log(isIdenticalProduct(product1, product2));    // false
+  console.log(isIdenticalProduct(product2, product1));    // false
+  console.log(isIdenticalProduct(product2, product2));    // true
+  console.log(isIdenticalProduct('product1', product2));  // Warning
+  console.log(isIdenticalProduct(product3, product2));    // true
+
+  </script>
+</body>
+</html>
+<!-- 
+
+1. Create object to represent a product from Myntra.
+
+2. Create an Object with two references and log changes to one object by changing the other one.
+
+3. Use bracket notation to display delivery-time.
+
+4. Given an object {message: 'good job', status: 'complete'}, use de-structuring to create two variables message and status.
+
+5. Add function isIdenticalProduct to compare two product objects.
+
+-->

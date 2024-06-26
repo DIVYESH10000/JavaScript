@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+  <link rel="stylesheet" href="object.css">
+</head>
+<body>
+  <header>
+    <nav class="nav_bar">
+      <a href="#1">36. What is an Object</a>
+      <a href="#2">37. Objects Syntax</a>
+      <a href="#3">38. Accessing Objects</a>
+      <a href="#4">39. Inside Objects</a>
+      <a href="#5">40. Autoboxing</a>
+      <a href="#6">41. Object References</a>
+      <a href="#7">42. Object Shortcuts</a>
+    </nav>
+  </header>
+  <main>
+    <pre>
+      <b id="1" class="bold">36. What is an Object</b>
+
+              <img src="images/obj1.png">                 
+      
+      <img src="images/obj2.png">
+
+      1. Groups multiple <span>values</span> together in <span>key-value</span> pairs.
+
+      2. How to Define: Use <span>{}</span> to enclose <span>properties</span>.
+
+      3. Example: product <span>{name, price}</span>.
+      
+      4. Dot Notation: Use <span>. operator</span> to access values.
+
+      5. Key Benefit: Organizes <span>related data</span> under a <span>single name</span>.
+
+      Example: ---
+
+
+      <b id="2" class="bold">37. Objects Syntax</b>
+
+      <img src="https://paper-attachments.dropbox.com/s_D8321C80F6574B261A5AA02D2476A50C8DDF61A6CC2583DCEE0E18EC365EF07B_1658417045591_Untitled+Diagram.jpg" alt="syntax">
+
+
+      1. Basic Structure: Uses <span>{}</span> to enclose <span>data</span>.
+      2. Rules: Property and <span>value</span> separated by a <span>colon(:)</span>.
+      3. Comma: Separates different <span>property-value</span> pairs.
+      4. Example: <span>{ name: "Laptop", price: 1000 }</span>.
+
+      
+      <b id="3" class="bold">38. Accessing Objects</b>
+
+      1. <span>Dot Notation</span>: Access properties using . Operatorlike <span>product.price</span>
+
+      2. <span>Bracket Notation</span> : Useful for properties with special characters <span>product[”nick-name"]</span>. <span>Variables can be used to access properties.</span>
+                          
+      3. <span>typeof returns object.</span>
+
+      4. Values can be added or removed to an object.
+
+      5. Delete Values using delete.
+
+
+      <span>
+        
+      let product = {
+        company : 'Mango',
+        item_name : 'Cotton stripped t-shirt',
+        // 'item-name' : 'Cotton stripped t-shirt',
+        price : 999,
+      };
+      </span>
+  
+      console.log(typeof product);
+      console.log(product);
+  
+      <span>
+      // For aceessing values we use . operator and bracket notation
+  
+      // Method 1:  . operator Example:--
+      console.log(`\n\n// Method 1 Example :  . operator:  Object.key \n`);
+      </span>
+  
+                console.log(product.company);
+                console.log(product.item_name);
+                console.log(product.price);
+                // Changing / re-assigning the value of key
+                product.company = 'Gucchi';
+                console.log(product.company); // company : 'Gucchi'
+  
+     <span>
+      // Method 2: Bracket Notation
+      console.log(`\n\n// Method 2 Example:  Bracket Notation : Object [Key];\n`);
+     </span>
+      
+              console.log(product ['company']); 
+              // Why inside quotes ? Because,  if we have a property like item-name, it's not allowed so we can use it like 'item-name' : 't-shrits'
+              console.log(product['price']);
+              console.log(product['item_name']);
+  
+  
+              //  Main use of Bracket Notation
+              let propertyName = 'item_name';
+  
+              console.log(product.propertyName);    // Undefined because there is no propertyName in Object product but when we use Bracket Notation, it substitutes the value stored in propertyName i.e. 'item_name'
+  
+              console.log(product [propertyName]);  // Cotton stripped t-shirt
+  
+  
+      <span>//  add OR delete Values</span>
+  
+      <img src="https://dev-updates-uploads.s3.ap-south-1.amazonaws.com/1678373241114-How%20to%20add%20and%20remove%20properties%20in%20JavaScript%20Object.jpg" alt="">
+  
+            <span>
+              delete product.company;
+            // delete product['company']; Also works
+            console.log(product);   // company deleted
+  
+            product.company = 'Fendi';  // added at the end
+            product['Offer'] = 'BOGO';  // added at the end
+  
+            console.log(product);
+            </span>
+
+      <b id="4" class="bold">39. Inside Objects</b>
+
+            <img src="images/obj3.png" alt="InsideObjects">   <img src="images/obj4.png" alt="">
+
+
+
+            <span>
+              1. Objects can contain Primitives like numbers and strings.
+
+              2. Objects can contain other objects and are called Nested Objects.
+
+              3. Functions can be object properties.
+
+              4. Functions inside an object are called methods.
+              
+              5. Null Value: Intentionally leaving a property empty.
+
+              <b>Note : When a function is inside an Object, it's called a Method.</b>
+            </span>
+
+
+            Example: 
+
+            <span>
+              console.log('\n\n39. Inside Objects\n');
+
+              let newProduct = {
+                newCompany : 'Fendi',
+                'new-Item' : 'T-Shirt',
+                price : 9999,
+  
+                              // Anonymous Function
+                displayPrice: function() {
+                  // console.log(`Price of the product is : ₹${newProduct.price}`)   
+                  // As its's happening inside the same object, we won't know the object name so we'll use:
+                    
+                  this.price ( implies CURRENT OBJECT)
+  
+                  console.log(`Price of the product is : ₹${this.price}`) 
+                }
+              };
+      
+              newProduct.displayPrice();
+            </span>
+
+    // console.log() : Means console is an Object and inside it there's a method log()
+
+    // Math.random() : Means Math is an Object and inside it there's a method random()
+
+
+      <b id="5" class="bold">40. Autoboxing</b>
+
+      <img src="images/obj5.png" alt="autoBoxing">
+
+      1. <span>Automatic conversion of primitives to objects</span>.
+
+      2. <span>Allows properties and methods to be used on primitives</span>.
+
+      3. Example: <span>Strings have properties and methods like length, toUpperCase, etc</span>.
+
+      Example: 
+      // 40. Autoboxing
+        console.log('\n\n40. Autoboxing\n');
+        console.log('On a dark Desert Highway, Cool wind in my hair'.toUpperCase());
+        console.log('I am the best'.replace('best', 'GREATEST'));
+        console.log('JavaScript is Awesome'.charAt(0));
+        console.log('JavaScript is Awesome');
+        
+        // Output in console
+
+        40. Autoboxing
+        ON A DARK DESERT HIGHWAY, COOL WIND IN MY HAIR
+        I am the GREATEST
+        J
+        JavaScript is Awesome
+
+
+      <b id="6" class="bold">41. Object References</b>
+
+      <img src="https://www.tektutorialshub.com/wp-content/uploads/2021/05/How-Value-Types-Reference-Types-are-stored.png">   <img src="images/pass-by-value.png" style="width: 600px;"> <img src="images/pass-by-reference.png" style="width: 600px;">
+
+
+
+      1. Objects work based on references, not actual data.
+
+      2. <span style="font-size: x-large; color: red;">Copying an object copies the reference, not the actual object</span>.
+      
+      3. <span style="font-size: x-large; color: red;">When comparing with ==, you're comparing references, not content</span>.
+    
+      4. Changes to one reference affects all copies.
+
+
+      Examples : 
+
+      // 41. Object References
+
+
+   <span>
+    // Pass by Value
+    console.log('\n\n41. Object References\n');
+
+    console.log('\n\nPass by Value\n');
+
+    let a = 5;
+    let b = a;  // new variable b is created at different MEMORY ADDRESS
+
+    console.log(`let a = 5;\nlet b = a;`);
+
+    console.log(`Value of a : ${a}\nValue of b : ${b} `);
+
+    a = 8;
+    console.log('a = 8');
+    console.log(`Value of a : ${a}\nValue of b : ${b} `);
+   </span>
+
+    <span>
+      //  Pass by Reference
+    console.log('\n\nPass by Reference\n\n');
+    let x = {num : 5};  // object x at        Address xxx1234
+    
+    let y = x;  // Here new object is not created, ONLY reference of  {num : 5} is given to y.
+                 // y will also point to same address.
+
+    console.log(`let x = {num = 5};\nlet y = x;`);
+
+    console.log(`Value of x.num : ${x.num}\nValue of y.num : ${y.num}`);
+
+    y.num = 99;
+
+    console.log(`Value of x : ${x.num}\nValue of y : ${y.num}`);
+    console.log(`When we change value of y.num, value of x.num also changes.\nThis means both References i.e. ref of x and ref of y\nWERE POINTING TO same Address Location.`);
+
+    </span>
+
+    // When comparing with ==, you're comparing references, not content.
+    console.log(`When comparing with ==, you're comparing references, not content`);
+    
+    let p = {pop: 'abcd'};
+    let q = {pop: 'abcd'};
+
+    console.log( p == q);     // false
+    console.log( p === q);     // false
+
+    console.log('Both case are false BECAUSE \nwhile comparing OBJECTS ==, === makes no difference. ONLY REFERENCES are compared, not the deep values(gotta do that individually from comparing individual values).');
+
+      <b id="7" class="bold">42. Object Shortcuts</b>
+
+      <img src="images/objShortcut1.png"><img src="images/objShortcut2.png">
+
+
+      1. De-structuring: <span>Extract properties</span> from objects easily.
+
+      2. We can extract more than one property at once.
+
+      3. Shorthand Property: <span> {message: message}</span> simplifies to just <span>message</span>.
+
+      4. Shorthand Method: Define <span>methods</span> directly inside the object <span>without the function keyword</span>.
+    </pre>
+  </main>
+  <footer>
+
+  </footer>
+
+  <script>
+    let product = {
+      company : 'Mango',
+      item_name : 'Cotton stripped t-shirt',
+      // 'item-name' : 'Cotton stripped t-shirt',
+      price : 999,
+    };
+
+    console.log(typeof product);
+    console.log(product);
+
+    // For aceessing values we use . operator and bracket notation
+
+    // Method 1:  . operator Example:--
+    console.log(`\n\n// Method 1 Example :  . operator:  Object.key \n`);
+
+              console.log(product.company);
+              console.log(product.item_name);
+              console.log(product.price);
+              // Changing / re-assigning the value of key
+              product.company = 'Gucchi';
+              console.log(product.company); // company : 'Gucchi'
+
+    // Method 2: Bracket Notation
+    console.log(`\n\n// Method 2 Example:  Bracket Notation : Object [Key];\n`);
+    
+            console.log(product ['company']); 
+            // Why inside quotes ? Because,  if we have a property like item-name, it's not allowed so we can use it like 'item-name' : 't-shrits'
+            console.log(product['price']);
+            console.log(product['item_name']);
+
+
+            //  Main use of Bracket Notation
+            let propertyName = 'item_name';
+
+            console.log(product.propertyName);    // Undefined because there is no property name in Object product but when we us Bracket Notation, it substitutes the value stored in propertyName i.e. 'item_name'
+
+            console.log(product [propertyName]);  // Cotton stripped t-shirt
+
+
+    //  add OR delete Values
+
+          delete product.company;
+          // delete product['company']; Also works
+          console.log(product);   // company deleted
+
+          product.company = 'Fendi';  // added at the end
+          product['Offer'] = 'BOGO';  // added at the end
+
+          console.log(product);
+
+    // 39. Inside Objects
+    console.log('\n\n39. Inside Objects\n');
+
+    let newProduct = {
+      newCompany : 'Fendi',
+      'new-Item' : 'T-Shirt',
+      price : 9999,
+
+                    // Anonymous Function
+      displayPrice: function() {
+        // console.log(`Price of the product is : ₹${newProduct.price}`)   
+        // As its's happening inside the same object, we won't know the object name so we'll use --------> this.price , implies CURRENT OBJECT.
+        console.log(`Price of the product is : ₹${this.price}`) 
+      }
+    };
+    
+    newProduct.displayPrice();
+
+    // console.log() : Means console is an Object and inside it there's a method log()
+
+    // Math.random() : Means Math is an Object and inside it there's a method random()
+
+
+    // 40. Autoboxing
+    console.log('\n\n40. Autoboxing\n');
+    console.log('On a dark Desert Highway, Cool wind in my hair'.toUpperCase());
+    console.log('I am the best'.replace('best', 'GREATEST'));
+    console.log('JavaScript is Awesome'.charAt(0));
+    console.log('JavaScript is Awesome');
+
+    // 41. Object References
+
+
+    // Pass by Value
+    console.log('\n\n41. Object References\n');
+
+    console.log('\n\nPass by Value\n');
+
+    let a = 5;
+    let b = a;  // new variable b is created at different MEMORY ADDRESS
+
+    console.log(`let a = 5;\nlet b = a;`);
+
+    console.log(`Value of a : ${a}\nValue of b : ${b} `);
+
+    a = 8;
+    console.log('a = 8');
+    console.log(`Value of a : ${a}\nValue of b : ${b} `);
+
+    //  Pass by Reference
+    console.log('\n\nPass by Reference\n\n');
+    let x = {num : 5};  // object x at        Address xxx1234
+    
+    let y = x;  // Here new object is not created, ONLY reference of  {num : 5} is given to y.
+                 // y will also point to same address.
+
+    console.log(`let x = {num = 5};\nlet y = x;`);
+
+    console.log(`Value of x.num : ${x.num}\nValue of y.num : ${y.num}`);
+
+    y.num = 99;
+
+    console.log(`Value of x : ${x.num}\nValue of y : ${y.num}`);
+    console.log(`When we change value of y.num, value of x.num also changes.\nThis means both References i.e. ref of x and ref of y\nWERE POINTING TO same Address Location.`);
+
+    // When comparing with ==, you're comparing references, not content.
+    console.log(`When comparing with ==, you're comparing references, not content`);
+    
+    let p = {pop: 'abcd'};
+    let q = {pop: 'abcd'};
+
+    console.log( p == q);     // false
+    console.log( p === q);     // false
+
+    console.log('Both case are false BECAUSE \nwhile comparing OBJECTS ==, === makes no difference. ONLY REFERENCES are compared, not the deep values(gotta do that individually from comparing individual values).');
+
+    // 42. Object Shortcuts
+    console.log('\n\n42. Object Shortcuts\n\n');
+
+    console.log(`De-structuring`);
+
+    let proDuct = {
+      comPany : 'Mango',
+      itemName : 'Cotton stripped T-Shirt',
+      priCe : 999,
+    };
+
+        // De-structuring
+
+        // let {comPany} = proDuct;
+        // console.log(comPany);
+
+        // can take out multiple values also
+        // We are creating Variables let {comPany, priCe} and Storing the values of comPany and proDuct from Object product into let {comPany, priCe}.
+
+        let {comPany, priCe} =  proDuct;
+        console.log(comPany, priCe);
+
+        // Property Shorthand
+        
+      // Watch Closely Second and third Image
+
+
+
+  </script>
+</body>
+</html>
+
+<!-- 
+
+36. What is an Object
+37. Objects Syntax
+38. Accessing Objects
+39. Inside Objects
+40. Autoboxing
+41. Object References
+42. Object Shortcuts
+
+Maintain score of Project
+
+-->
