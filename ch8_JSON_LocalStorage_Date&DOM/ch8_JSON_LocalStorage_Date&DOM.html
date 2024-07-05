@@ -17,60 +17,376 @@
   </header>
   <main>
     <pre>
-      <b class="bold">43. What is JSON?</b><br>
+      <b id="1" class="bold">43. What is JSON?</b><br>
       <img src="images/json_JS_obj.png" alt="json_JS_ObjExample">
 
+              <span>
+                1. JavaScript Object Notation: Not the same as JS object, but similar.
+
+                2. Common in network calls and data storage.
+
+                3. JSON.stringify() and JSON.parse()
+
+                4. IMPORTANT :Strings are easy to transport over network.
+
+                5. JSON requires double quotes. Escaped as \".
+                
+                6. IMPORTANT : JSON is data format, JS object is a data structure.
+            </span>
+            Note: Because JSON is native to JS, we can say that JS object is by default a JSON Object. That's why we're able to directly pass JS Object to JSON.parse() and JSON.stringify().
+
+                -In other languages(c object, python object,  java object etc) this does not happen, there we gotta manually convert them into JSON Object, THEN TO String.
+                
+            Example:
+
+            // JS Object and JSON Object
+            // Converting to String and back to Object using JSON.parse()  and JSON.stringify()
+
+            console.log('\n\n43. What is JSON?\n\n');
+            // JS Object
+            let product = {
+              name : 'T-Shirt',
+              company : 'Mango',
+              price : 666,
+
+              rating : {
+                stars: 4.5,
+                noOfreviews: 500
+              },
+            };
+            console.log(`typeof product before using JSON.stringify(product) : ${typeof product}\n\n`);
+            console.log(product);
+            // Converting JS Object into JSON String object using JSON.stringify(product);
+            // Becomes JSON Object
+            let str = JSON.stringify(product);
+            console.log(`\n\ntypeof product after using JSON.stringify(product) : ${typeof str}\n\n`);
+            console.log(str);
+
+            // converting JSON Object back to JS Object using JSON.parse()
+
+            let newProduct = JSON.parse(str);
+
+            console.log(`\n\nconverting JSON Object back to JS Object using JSON.parse(str):${typeof newProduct}\n\n`);
+            console.log(newProduct);
+
+      <b id="2"  class="bold">44. Local Storage</b>
+
+              <img src="https://www.ggorantala.dev/content/images/size/w1460/2023/02/JavaScript-Local-Storage-3.png" alt="localStorage">
+
+            Example:
+
+            <span>
+              console.log('\n\n44. Local Storage\n\n');
+
+              let item = {
+                name : 'T-Shirt',
+                company : 'Mango',
+                price : 666,
+
+                rating : {
+                  stars: 4.5,
+                  noOfreviews: 500
+                },
+              };
+
+              // localStorage.setItem('Name', 'Space Ghost');
+              // localStorage.setItem('Ying Crackle', 'Cyber Security');
+
+              // console.log(localStorage.getItem('Ying Crackle'));
+
+              localStorage.setItem('LatestItem', JSON.stringify(item));
 
 
+              let m = localStorage.getItem('LatestItem');
+              console.log(typeof m);        // Type  : string
+
+              console.log(localStorage.getItem('LatestItem'));
+
+              // Or to retrive back to object form.
+
+              let productX = JSON.parse(localStorage.getItem('LatestItem'));
+              console.log(productX);        // Type :  Object
+
+
+              
+              // localStorage.removeItem()         Or        sessionStorage.removeItem()
+
+              localStorage.removeItem('Name');
+
+              // localStorage.clear()                   Or        sessionStorage.clear()
+
+              localStorage.clear();
+
+
+              Note: Never store any kinda sensitive INFORMATION in the localStorage.
+            </span>
       
+      <b  id="3" class="bold">45. Date</b>
+
+          <img src="images/calendar.png" alt="calendar">
+
+          1. <span>new Date() : </span> Creates a new Date object with the current date
+          and time.
+          2. Key Methods:
+
+          • <span>getTime()</span>: Milliseconds since Epoch.
+          • <span>getFullYear()</span>: 4-digit year 
+          • <span>getDay()</span>: Day of the week
+          • <span>getMinutes()</span>: Current minute
+          • <span>getHours()</span>: Current hour.
+
+          3. Crucial for <span>timestamps</span>, <span>scheduling</span>, etc.
+
+      <b  id="4" class="bold">46. DOM Properties & Methods</b>
+        
+                    DOM and Element Properties                DOM and Element Methods
+
+                              1. location                                       1. getElementById()
+                              2. title                                             2. querySelector()
+                              3. href                                             3. classList: add(), remove()
+                              4. domain                                       4. createElement()
+                              5. innerHTML                                 5. appendChild()
+                              6. innerText                                    6. removeChild()
+                              7. classList                                      7. replaceChild()
+        
+       Example: 
+
+       
+      // Creating a date Object
+      let myDate = new Date();
+      console.log(myDate);
+
+      <span>
+        // Key Methods
+            console.log(myDate.getTime()); // Gives EPOC , means number of milliseconds since 1 Jan 1970 (kinda mark).
+            console.log(myDate.getFullYear());
+            console.log(myDate.getDay());
+            console.log(myDate.getHours());
+            console.log(myDate.getMinutes());
+            console.log(myDate.getMilliseconds());
+      </span>
 
 
-      <b class="bold">44. Local Storage</b>
+      Example : 
+      /*
+  
+          DOM is document
 
+          document.location : Gives browser URL location
 
+          {
+            "ancestorOrigins": {},
+            "href": "http://127.0.0.1:5501/JavaScript/ch8_JSON_LocalStorage_Date&DOM/ch8_JSON_LocalStorage_Date&DOM.html",
+            "origin": "http://127.0.0.1:5501",
+            "protocol": "http:",
+            "host": "127.0.0.1:5501",
+            "hostname": "127.0.0.1",
+            "port": "5501",
+            "pathname": "/JavaScript/ch8_JSON_LocalStorage_Date&DOM/ch8_JSON_LocalStorage_Date&DOM.html",
+            "search": "",
+            "hash": ""
+        }
 
-      <b class="bold">45. Date</b>
+            Note : We can make changes also in the console but it'll be temporary like browser tools
 
+            document.title            : 'ch8_JSON_LocalStorage_Date&DOM'  i.e. title of the document
 
+            document.href           
+            document.domain         : 127. 0. 0. 1 Local Server
+            document.innerHTML      :
+            document.innerText      : 
+            document.classList      : Example : document.querySelector('button')
+                                                document.querySelector('button').classList.add('your-button')  This will add class 'your-button' to button will look like class = "my-button your-button"
+          
 
-      <b class="bold">46. DOM Properties & Methods</b>
+          createElement():
 
+          <div class="my-div">This is the div</div>
 
+          <span>
+            
+            console.log('\n\ncreateElement() : \n\n');
+
+            let button = document.createElement('Button');
+
+            // We can add text to button
+            button.innerText = 'Click me';
+
+            // Now when we type button in console we'll see that an element <button></button> is created.
+            // If I wanna append <button></button> to a child i.e. existing element
+            document.querySelector('.my-div').appendChild(button);
+
+            // TO REMOVE A CHILD
+
+            // document.querySelector('.my-div').removeChild(button);
+
+            // To replace a child
+            // document.querySelector('.my-div').replaceChild(button);
+          </span>
+       */
 
     </pre>
   </main>
   <footer>
-
+    “Whatever you do, don’t be another brick in the wall!”
   </footer>
 
   <script>
 // 43. What is JSON?
+
+// JS Object and JSON Object
+// Converting to String and back to Object using JSON.parse()  and JSON.stringify()
+
 console.log('\n\n43. What is JSON?\n\n');
+// JS Object
+let product = {
+  name : 'T-Shirt',
+  company : 'Mango',
+  price : 666,
 
+  rating : {
+    stars: 4.5,
+    noOfreviews: 500
+  },
+};
+console.log(`typeof product before using JSON.stringify(product) : ${typeof product}\n\n`);
+console.log(product);
+// Converting JS Object into JSON String object using JSON.stringify(product);
+// Becomes JSON Object
+let str = JSON.stringify(product);
+console.log(`\n\ntypeof product after using JSON.stringify(product) : ${typeof str}\n\n`);
+console.log(str);
 
+// converting JSON Object back to JS Object using JSON.parse()
 
+let newProduct = JSON.parse(str);
 
-
+console.log(`\n\nconverting JSON Object back to JS Object using JSON.parse(str):${typeof newProduct}\n\n`);
+console.log(newProduct);
 
 // 44. Local Storage
+
+
+
 console.log('\n\n44. Local Storage\n\n');
 
+/* Here we have 4 methods :---
+
+          1) localStorage.setItem(keyname, value)       Or        sessionStorage.setItem(keyname, value)
+          2) localStorage.getItem(keyname)              Or        sessionStorage.getItem(keyname)
+          3) localStorage.clear()                   Or        sessionStorage.clear()
+          4) localStorage.removeItem('key')         Or        sessionStorage.removeItem(key)
 
 
+*/
 
+
+let item = {
+  name : 'T-Shirt',
+  company : 'Mango',
+  price : 666,
+
+  rating : {
+    stars: 4.5,
+    noOfreviews: 500
+  },
+};
+
+// localStorage.setItem('Name', 'Space Ghost');
+// localStorage.setItem('Ying Crackle', 'Cyber Security');
+
+// console.log(localStorage.getItem('Ying Crackle'));
+
+localStorage.setItem('LatestItem', JSON.stringify(item));
+
+
+let m = localStorage.getItem('LatestItem');
+console.log(typeof m);        // Type  : string
+
+console.log(localStorage.getItem('LatestItem'));
+
+// Or to retrive back to object form.
+
+let productX = JSON.parse(localStorage.getItem('LatestItem'));
+console.log(productX);        // Type :  Object
+
+// localStorage.removeItem()         Or        sessionStorage.removeItem()
+
+localStorage.removeItem('Name');
+
+// localStorage.clear()                   Or        sessionStorage.clear()
+
+localStorage.clear();
 
 
 // 45. Date
 console.log('\n\n45. Date\n\n');
 
+      // Creating a date Object
+      let myDate = new Date();
+      console.log(myDate);
 
+      // Key Methods
+      console.log(myDate.getTime()); // Gives EPOC , means number of milliseconds since 1 Jan 1970 (kinda mark).
+      console.log(myDate.getFullYear());
+      console.log(myDate.getDay());
+      console.log(myDate.getHours());
+      console.log(myDate.getMinutes());
+      console.log(myDate.getMilliseconds());
+      
 
+  // 46. DOM Properties & Methods
+  console.log('\n\n46. DOM Properties & Methods\n\n');
 
+  /*
+  
+  DOM is document
 
+  document.location : Gives browser URL location
 
-// 46. DOM Properties & Methods
-console.log('\n\n46. DOM Properties & Methods\n\n');
+  {
+    "ancestorOrigins": {},
+    "href": "http://127.0.0.1:5501/JavaScript/ch8_JSON_LocalStorage_Date&DOM/ch8_JSON_LocalStorage_Date&DOM.html",
+    "origin": "http://127.0.0.1:5501",
+    "protocol": "http:",
+    "host": "127.0.0.1:5501",
+    "hostname": "127.0.0.1",
+    "port": "5501",
+    "pathname": "/JavaScript/ch8_JSON_LocalStorage_Date&DOM/ch8_JSON_LocalStorage_Date&DOM.html",
+    "search": "",
+    "hash": ""
+}
 
+    Note : We can make changes also in the console but it'll be temporary like browser tools
+
+    document.title            : 'ch8_JSON_LocalStorage_Date&DOM'  i.e. title of the document
+
+    document.href           
+    document.domain         : 127. 0. 0. 1 Local Server
+    document.innerHTML      :
+    document.innerText      : 
+    document.classList      : Example : document.querySelector('button')
+                                        document.querySelector('button').classList.add('your-button')  This will add class 'your-button' to button will look like class = "my-button your-button"
+   
+  */
+
+  console.log('\n\ncreateElement() : \n\n');
+
+  let button = document.createElement('Button');
+
+  // We can add text to button
+  button.innerText = 'Click me';
+
+  // Now when we type button in console we'll see that an element <button></button> is created.
+  // If I wanna append <button></button> to a child i.e. existing element
+  document.querySelector('.my-div').appendChild(button);
+
+  // TO REMOVE A CHILD
+
+  // document.querySelector('.my-div').removeChild(button);
+
+  // To replace a child
+  // document.querySelector('.my-div').replaceChild(button);
 
 
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket-Game</title>
+  <link rel="stylesheet" href="cricket.css">
+</head>
+<body>
+  <header>
+    <h1>Bat Ball Stump Game</h1>
+  </header>
+  <main>
+    <div class="buttonContainer">
+      
+      <button class="button" onclick="
+
+      let computerChoice =  gernerateComputerChoice();
+      let resultMsg = getResult('Bat', computerChoice);
+      showResult('Bat', computerChoice, resultMsg);
+        ">Bat</button>
+
+      <!-- Ball Button -->
+      <button class="button" onclick="
+
+      computerChoice =  gernerateComputerChoice();
+      resultMsg = getResult('Ball', computerChoice);
+      showResult('Ball', computerChoice, resultMsg);
+      ">Ball</button>
+
+      <!-- Stump Button -->
+      <button class="button" onclick="
+
+      computerChoice =  gernerateComputerChoice();
+      resultMsg = getResult('Stump', computerChoice);
+      showResult('Stump', computerChoice, resultMsg);
+      ">Stump</button>
+
+      <button class = "button" onclick="localStorage.clear()
+      resetScore(); 
+      
+      ">Reset</button>
+
+      <h3 id="user-move"></h3>
+      <h3 id="computer-move"></h3>
+      <h3 id="result"></h3>
+      <h3 id="score"></h3>
+
+    </div>
+  </main>
+  <footer>
+    <hr><br> Math.random() : It's a math function which we can use to generate <span>random</span> computer choices. <br>Math.randon( ) :<span> By default it gives random numbers between 0 and 1.</span><br>Logic : If something is in range of 0 to 1, and I multiply it with 3. <span>Then range becomes from 0 to 3</span>.</span><hr>
+ </footer>
+  <script>
+    let scoreStr = localStorage.getItem('Score');
+    let score;
+    resetScore(scoreStr);
+  
+    function resetScore(scoreStr){
+      score = scoreStr ? JSON.parse(scoreStr) : {
+        win : 0,
+        lost : 0,
+        tie : 0,
+      };
+    
+
+      // if(scoreStr !== undefined) {
+      //   score = JSON.parse(scoreStr);
+      // } else {
+      //   score = {
+      //     win : 0,
+      //     lost : 0,
+      //     tie : 0,
+      //   }
+      // }
+
+      score.displayScore = function() {
+        return `No. of matches won  : ${score.win},
+          Lost :  ${score.lost},
+          Tie  :  ${score.tie}`;
+      }
+    }
+
+
+  
+    // showResult();
+
+    // Function 1 : This will generate random number between 0 and 3
+    function gernerateComputerChoice () {
+      let randomNumber = Math.random() * 3;     // Local variable
+      if (randomNumber <= 1){
+        return 'Bat';
+      } else if ( randomNumber <= 2){
+        return 'Ball';
+      } else {
+        return 'Stump';
+      }     
+    }
+    
+    // Function 2 : Comparing userMove and computerMove
+    function getResult(userMove, computerMove) {
+      if(userMove === 'Bat') {
+        if (computerMove === 'Ball') {
+          score.win++ ;
+          return 'User won,  yay !!!';
+        } else if (computerMove === 'Bat') {
+          score.tie++ ;
+          return  `It's a tie, please try again.`;
+        } else if (computerMove === 'Stump') {
+          score.lost++ ;
+          return `Computer won the game, better luck next time.`;
+        }
+
+      } else if (userMove === 'Ball') {
+
+          if (computerMove === 'Ball'){
+            score.tie++ ;
+            return `It's a tie, please try again.`;
+          } else if(computerMove === 'Bat'){
+            score.lost++ ;
+            return  `Computer won the game, better luck next time.`;
+          } else if(computerMove === 'Stump'){
+            score.win++ ;
+            return 'User won,  yay !!!';
+          }
+
+      } else {
+        if (computerMove === 'Ball'){
+          score.lost++ ;
+          return  `Computer won the game, better luck next time.`;
+        } else if(computerMove === 'Bat'){
+          score.win++ ;
+          return 'User won,  yay !!!';
+        } else if(computerMove === 'Stump'){
+          score.tie++ ;
+          return `It's a tie, please try again.`;
+        }
+      }
+    }
+
+    // Function : Function to show result
+    function showResult (userMove, computerMove, resultMsg) {
+      localStorage.setItem('Score', JSON.stringify(score));
+
+      document.querySelector('#user-move').innerText = `You have choosen : ${userMove}`;
+      document.querySelector('#computer-move').innerText =`Computer choice is : ${computerMove}`;
+
+      // console.log(score);
+      alert(`\n${resultMsg}\n${score.displayScore()}`);
+  
+    }
+
+  </script>
+</body>
+</html>
+<!-- 
+
+Task 1:
+
+  1. Score will survive browser refresh.
+  2. Add Reset Button To clear or reset stored data.
+
+  Task 2:
+
+  1. Show moves in the page instead of the alert
+  2. Show result in the page instead of the alert
+
+  Task 3:
+  1. Show moves in the page instead of the alert
+  2. Show result in the page instead of the alert
+
+  Task 4:
+  1. Replace the Bat-Ball-Stump Buttons with Images
+
+-->

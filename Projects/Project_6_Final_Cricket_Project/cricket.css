@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+    background-color: azure;
+
+}
+header h1 {
+  font-size: 50px;
+  font-weight:bold;
+  text-align: center;
+  text-decoration: underline;
+  color: rebeccapurple;
+  
+}
+.buttonContainer { 
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  align-items: center;
+  height: 300px;
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid grey;
+  border-radius: 10px;
+  background-image: url(images/grass1.jpg);
+}
+.align {
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  height: 350px;
+  width: 40%;
+  padding: 20px;
+  margin: auto;
+  background-color: rgb(177, 155, 117);
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+
+
+.button{
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: rgb(183, 241, 255, 0.25);
+  border-radius: 50%;
+  border: none;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+.choice-image {
+  height: 100px;
+  
+}
+.reset {
+  border-radius: 10px;
+  height: 70px;
+  width: 150px;
+  margin: 50px 30px;
+  background-color: #22272e;
+  color: white;
+}
+
+
+span {
+  color: royalblue;
+}
+footer {
+  position: fixed;
+  bottom: 0px;
+  background-color: rgb(249, 249, 250);
+  width: 100%;
+  font-size: 25px;
+  font-weight:bold;
+  color: darkorchid;
+  border-bottom: 2px;
+}

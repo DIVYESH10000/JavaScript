@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practise Set 8</title>
+  <style>
+    #pressBtn {
+      height: 50px;
+      width: 600px;
+      font-size: 25px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+    }
+    .js-odd {
+      background-color: rgb(141, 103, 179);
+    }
+    .js-even {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+
+  <h2>You have clicked : 0 times</h2>
+
+  <button id="pressBtn" onclick="
+  counting();
+  
+  // document.querySelector('h2').innerText = `You have clicked : ${press} times`;
+  
+  ">Click Me and I'll Count</button>
+
+  <script>
+  // 1. Display good morning, afternoon and night based on current hour.
+  // 2. Add the name to the output too.
+
+   let hey = wish('Space Ghost');
+   document.querySelector('h1').innerText = `${hey}`;
+   function wish(name){
+   const hour = new Date().getHours();
+
+    // Long Way
+    // if (hour >=4 && hour < 12) {
+    //   return `Good Morning`;
+    // } else if(hour >= 12 && hour < 16) {
+    //   return `Good Afternoon`;
+    // } else if(hour >= 16 && hour < 20){
+    //   return `Good Evening`;
+    // } else {
+    //   return `Good Night`;
+    // }    
+
+    // Short Way
+    return hour < 4 ? `Goodnight ${name}` : hour < 12 ? `Good Morning ${name}` : hour < 16 ? `Good Evening ${name}` : `Good Night ${name}`; 
+   }
+
+  //  3. Create a Button which shows the number how many times it has been pressed.
+      // • Also, it has different colors for when it has been pressed odd or even times.
+      // • The click count should also survive browser refresh.
+
+    let gettingLocalStorage = JSON.parse(localStorage.getItem('noOfTimesClicked'));
+
+    let clicked = gettingLocalStorage ? JSON.parse(gettingLocalStorage) : 0;
+    if(clicked !== 0){
+      document.querySelector('h2').innerText = `You have clicked : ${clicked} times`;
+    }
+    function counting (gettingLocalStorage){
+      clicked++; 
+      document.querySelector('h2').innerText = `You have clicked : ${clicked} times`;
+      localStorage.setItem('noOfTimesClicked', JSON.stringify(clicked));
+      update();
+    }; 
+
+    function update() {
+      if(clicked % 2 === 0){
+        document.querySelector('#pressBtn').classList.remove('js-odd'); 
+        document.querySelector('#pressBtn').classList.add('js-even'); 
+      } else {
+        document.querySelector('#pressBtn').classList.remove('js-even'); 
+        document.querySelector('#pressBtn').classList.add('js-odd'); 
+      }
+      
+    }
+      
+  
+    update();
+
+  
+  </script>
+</body>
+</html>
