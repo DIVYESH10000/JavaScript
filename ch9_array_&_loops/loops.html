@@ -20,25 +20,233 @@
   <main>
     <pre>
       <b id="4">50. What is a Loop?</b>
-        <img src="https://www.educative.io/api/edpresso/shot/4798856730509312/image/5668600916475904" style="width: 600px;" >
+        <img src="https://www.educative.io/api/edpresso/shot/4798856730509312/image/5668600916475904" style="width: 500px;" >
+
+        1. Code that runs multiple times based on a condition.
+        2. Loops also alter the flow of execution, similar to functions.
+            • Functions: Reusable blocks of code.
+            • Loops: Repeated execution of code.
+        3. Loops automate repetitive tasks.
+        4. Types of Loops: for, while, do-while.
+        5. Iterations: Number of times the loop runs.
+
 
       <b id="5">51. While Loop</b>
+        <img src="images/while1.png">           <img src="images/while2.png">
+        
+      1. Iterations: Number of times the loop runs.
+      2. Used for non-standard conditions.
+      3. Repeating a block of code while a condition is true.
+      4. Remember: Always include an update to avoid infinite loops.
+
+      Example:
+
+      // 51. While Loop 
+      console.log('51. While Loop');
+
+      let i = 1 ;                       // Initialization
+      while ( i <= 10) {                 // Condition
+        console.log('Hello World!')     
+        i++;                            // Updating (It's a must to prevent Infinite loop)
+      }
+
+      console.log('Final value of i: ' + i);      // Condition becomes false
+
+
+      let x = 0;
+      while (x < 1) {
+        console.log(x);
+        x = Math.random() * 2;      // Here the iterations are  not fixed i.e. non-standard condition 
+      }
+
+      console.log('Final value of x: ' + x);      // Condition becomes false
 
 
       <b id="6">52. Do While Loop</b>
+      <img src="images/doWhile1.png">           <img src="images/doWhile2.png">
 
+      1. Executes block first, then checks condition.
+      2. Guaranteed to run at least one iteration.
+      3. Unlike while, first iteration is unconditional.
+      4. Don't forget to update condition to avoid infinite loops.
+
+      Example:
+
+      // 52. Do While Loop
+      console.log('\n\n52. Do While Loop\n\n');
+
+
+      let num1 = 0;                     // Initialization
+      do {
+        // Body of the loop
+        console.log(num1);
+        num1++;                         // Updation(Must)
+
+      }
+      // while (/*Condition*/ num1 > 5);
+      while (/*Condition*/ false);      // Will Execute once
 
       <b id="7">53. For Loop</b>
+      <img src="images/for1.png">           <img src="images/for2.png">
 
+      1. Standard loop for running code multiple times.
+      2. Generally preferred for counting iterations.
 
       <b id="8">54. Accumulator Pattern</b>
+          <img src="https://images.moneycontrol.com/static-mcnews/2023/08/Accumulate_1280x720_3-770x433.png?impolicy=website&width=400&height=225">
 
+      1. A pattern to accumulate values through looping.
+      2. Common Scenarios:
+            • Sum all the numbers in an array.
+            • Create a modified copy of an array.
+
+      Example:
+
+      // 54. Accumulator Pattern
+        let arr = [1, 3, 5, 6, 9, 0, 7];
+        let sum = 0;
+        for(let i = 0; i < arr.length; i ++) {
+          sum += arr[i];
+        }
+        console.log(`Sum of arr elements: ${sum}`);
+
+        // Find squares of elements in arr
+
+        let squares = [];
+        for (let i = 0; i < arr.length; i++) {
+          squares.push(arr[i] * arr[i]);
+        }
+        console.log(squares.toString());
 
       <b id="9">55. Break & Continue</b>
+
+      <img src="images/breakContinue.png">
+
+      1. Break lets you stop a loop early, or break out of a loop.
+      2. Continue is used to skip one iteration or the current iteration.
+      3. In while loop remember to do the increment manually before using continue.
+
+      Example: 
+
+
     </pre>
   </main>
-  <footer>
-
+  <footer style="background-color: hotpink;">
+    “All those things that werent supposed to happen? They happened. What happens next is up to you.”
   </footer>
+  <script>
+
+// 51. While Loop 
+console.log('\n\n51. While Loop\n\n');
+
+let i = 1 ;                             // Initialization
+while ( i <= 10) {                      // Condition
+  console.log('Hello World!')     
+  i++;                                  // Updating (It's a must to prevent Infinite loop)
+}
+console.log('Final value of i: ' + i);  // Condition becomes false
+
+let x = 0;
+while (x < 1) {
+  console.log(x);
+  x = Math.random() * 2;      // Here the iterations are  not fixed i.e. non-standard condition 
+}
+console.log('Final value of x: ' + x);      // Condition becomes false
+
+
+
+// 52. Do While Loop
+console.log('\n\n52. Do While Loop\n\n');
+
+let num1 = 0;                     // Initialization
+do {
+  // Body of the loop
+  console.log(num1);
+  num1++;                         // Updation(Must)
+}
+// while (/*Condition*/ num1 > 5);
+while (/*Condition*/ false);      // Will Execute once
+
+
+// 53. For Loop
+console.log('\n\n53. For Loop\n\n');
+for (let num = 1; num <= 10; num++){
+  console.log('Hello World!');
+  console.log(num);
+}
+
+
+// Generally preferred for counting iterations
+
+let nums = [12, 33, 55, 565, 78, 9];
+
+for(let i = 0; i < nums.length; i++){
+  console.log(nums[i]);
+}
+
+
+// 54. Accumulator Pattern
+let arr = [1, 3, 5, 6, 9, 0, 7];
+let sum = 0;
+for(let i = 0; i < arr.length; i ++) {
+  sum += arr[i];
+}
+console.log(`Sum of arr elements: ${sum}`);
+
+// Find squares of elements in arr
+
+let squares = [];
+for (let i = 0; i < arr.length; i++) {
+  squares.push(arr[i] * arr[i]);
+}
+console.log(squares.toString());
+
+
+// 55. Break & Continue
+console.log('\n\n55. Break & Continue\n\n');
+
+// Example 1
+// Break
+for(let i = 0; i < 50; i++) {
+  // I wanna exit as soon as I get 44
+  console.log(i)
+  if(i === 21) {
+    break;
+  }
+}
+
+// Example 2
+// Break
+console.log('Example: 2');
+let arr3 = [1, 3, 45, 6, 5, 7, 8, 98, 21];
+let z = 0;
+for(let i = 0; i < arr3.length; i++) {
+  // I wanna search position of 8
+  if(arr3[i] === 8){
+    console.log(`The index of Element 8 is: ${i}`);
+    break;
+  }
+  console.log('Still looking');
+}
+
+
+// Continue
+// NOTE: WHEN USING continue in  While, do while loop,
+// make sure you DON'T write updation after continue, as continue skips one iteration
+// Example 1
+
+for(let i = 1; i <=25; i++) {
+  // if(i % 2 !== 0) {
+  //   console.log(i);
+  // } 
+
+  // What else we can do is that we can skip the even ones.
+  if(i % 2 === 0) {
+    continue;
+  }
+  console.log(i);
+}
+
+  </script>
 </body>
 </html>
