@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Functions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="nav_bar">
+      <a href="#1">56. Anonymous Functions As Values</a>
+      <a href="#2">57. Arrow functions</a>
+      <a href="#3">58. setTimeout & setInterva</a>
+      <a href="#4">59. Event Listener</a>
+      <a href="#5">60. For Each Loop</a>
+      <a href="#6">61. Array methods</a>
+    </nav>
+  </header>
+  <main>
+    <pre>
+      <b id="1" class="bold">56. Anonymous Functions As Values</b>
+
+      <img src="images/advance1.png">
+
+    1. <span>Functions in JavaScript are first-class citizens; they can be assigned to variables</span>.
+    2. Functions defined without a name, often assigned to a variable.
+    3. <span>Anonymous functions can be properties in objects.</span>
+    4. Can be passed as arguments to other functions.
+    5. Invoked using () after the function name or variable.
+    6. <span>console.log(myFunction); and typeof myFunction will both indicate it's a function</span>.
+
+    Example: 
+                              // 56. Anonymous Functions As Values
+                              console.log('\n\n56. Anonymous Functions As Values\n\n');
+
+                              let sum = function(num1, num2) {
+                                return num1 + num2;
+                              };
+
+                              // newSum is now a Reference to function sum, just like object references.
+                              let newSum = sum;
+
+                              console.log(sum(4, 5));
+                              console.log(newSum(4, 5));
+
+                                  // Passing functions as an argument to another functions
+                                  // Example: We have a function to sum Two numbers but we need to find the sum of Three numbers.
+                                  // ((4 + 5) +7), so from sum() we can make such function
+
+                                  let sumThreeNumbers = function(num1, num2, num3, sumTwoNumbers) {
+                                    let sum1 = sumTwoNumbers(num1, num2);
+                                    return sumTwoNumbers(sum1, num3);
+                                  }
+
+                                  console.log(sumThreeNumbers(4 ,5 ,6, sum));
+
+                                  console.log(sumThreeNumbers);
+                                  console.log(typeof sumThreeNumbers);
+
+
+    <b id="2" class="bold">57. Arrow functions</b>
+
+    <img src="images/advance2.png">
+
+    1. A concise way to write anonymous functions.
+  
+    2. <span>For Single Argument: Round brackets optional</span>.
+
+    3. <span>For Single Argument: Round brackets optional</span>.
+
+    4. <span>Often used when passing functions as arguments</span>.
+
+    Example: 
+
+                              // 57. Arrow functions
+                              console.log('\n\n57. Arrow functions\n\n')
+
+                              let sums = function(n1, n2) {
+                                return n1 + n2;
+                              }
+                              console.log(sums(6, 8));
+                              // In above function we're writing function keyword to declare but we can use => symbol instead.
+
+                              let Sum1 = (n1, n2) => {
+                                return n1 + n2;
+                              }
+                              console.log(Sum1(6, 8));
+
+                              //  OR when its single line statement we can directly return
+
+                              let Sum2 = (n1, n2) => n1 + n2;
+                              console.log(Sum2(6, 8));
+
+                              // Example: 
+                              let square = num => num * num;
+
+                              console.log(square(6));
+
+
+    <b id="3" class="bold">58. setTimeout & setInterval</b>
+
+
+    <img src="https://www.encora.com/hs-fs/hubfs/Picture1-Feb-14-2023-05-04-41-0816-PM.jpg?width=480&height=320&name=Picture1-Feb-14-2023-05-04-41-0816-PM.jpg">        <img src="https://javascript.info/article/settimeout-setinterval/settimeout-interval@2x.png">
+
+    1. Functions for executing code asynchronously after a delay.
+    2. setTimeout runs once; setInterval runs repeatedly.
+    3. setTimeout:
+        • Syntax: setTimeout(function, time)
+        • Cancel: clearTimeout(timerID)
+    4. setInterval:
+        • Syntax: setInterval(function, time)
+        • Cancel: clearInterval(intervalID)
+
+
+    Example: 
+    // 58. setTimeout & setInterval
+    console.log('\n\n58. setTimeout & setInterval\n\n');
+
+    // In this process function Executed only once.
+    // setTimeout(function, time in milli-seconds);
+
+
+                // We can separetely define function then pass as argument along with time in milli-seconds.
+                let alarm = function() {
+                  console.log(`What's your story morning glory ? ${new Date()}`);
+                }
+
+                setTimeout(alarm, 2000);
+
+                // Or we can define the function directly inside setTimeout(function, time)
+
+                setTimeout(function() {
+                  console.log(`Kaley Cuoco`);
+                }, 3000);
+
+                // Example:
+
+                // We can skip brackets also only in case of SINGLE Argument
+                // () => console.log(` I am arrow function with setTimeout.`);
+                
+                setTimeout(() => console.log(` I am arrow function with setTimeout.`), 2000); 
+                // If above function is last the after compilation it's gonna get EXECUTED First.
+
+                // NOTE : setTimeout() returns timerId
+                
+                // Suppose we wanna cancel setTimeout we can do that by using timerId
+                      
+                      let timerId = setTimeout(alarm, 10000);   // 10 seconds
+                      console.log(`Alarm set with timerId : ${timerId}`);
+                      // Let's say I wanna end setTimeout()     before 10 seconds, we can do that using 
+                      // timerId in  clearTimeout(timerID)
+
+                      clearTimeout(timerId);
+
+    // setInterval (function, time in milli-seconds);
+    
+                // In this process will be EXECUTED everytime after the interval.            
+                // setInterval(alarm, 1000); // After every 1 second this will execute.
+
+                // To cancel setInterval
+                
+                let intervalID = setInterval(alarm, 1000);
+                // clearInterval(intervalID);
+
+                // MORE CREATIVE WAY: 
+                setTimeout(() => clearInterval(intervalID), 5000);                         
+
+    
+
+
+    <b id="4" class="bold">59. Event Listener</b>
+
+      <img src="images/advance3.png">
+
+      
+      <button id="my-button" style=" height: 50px; width: 100px;">Click Me</button>
+
+
+
+    1. <span>What Is an Event</span>: Occurrences like clicks, mouse movement, keyboard input (e.g.birthday, functions).
+    2. <span>Using querySelector to attach listeners</span>.
+    3. <span>Multiple Listeners</span>: You can add more than one.
+    4. <span>removeEventListener('event', functionVariable)</span>;
+
+    Example: 
+
+    // 59. Event Listener
+    console.log('\n\n59. Event Listener\n\n');
+
+              // addEventListener("EventType", anonymousFunction(info about the event in {object} form))
+              
+              let buttonElement = document.querySelector('#my-button');
+
+              buttonElement.addEventListener('click', event => console.log('\n\nI am Clicked\n\n'));
+
+              // Or
+              let behaviour = () => {
+                console.log('I');
+                console.log('am ');
+                console.log('the GREATEST');
+              }           
+              buttonElement.addEventListener('click', behaviour);
+
+              // On a single Event we can have multiple functions separately.
+
+              let printDate = () => console.log(new Date());
+              buttonElement.addEventListener('click', printDate);
+
+              // When our work is finished with the addEventListener()  we can REMOVE it using:--
+              // Note : addEventListener() and removeEventListener() are not general functions, they must be used with Elements.
+
+    // removeEventListener('EventType',  functionToRemove);
+
+              buttonElement.removeEventListener('click', behaviour);
+
+              // Note: WE CANNOT REMOVE A FUNCTION WITHOUT reference. i.e. If we define inside addEventListener()
+
+              // There are Various types of event listreners see MDN Reference.
+
+    <b id="5" class="bold">60. For Each Loop</b>
+
+      <img src="images/advance4.png">
+
+      
+
+    1. A method for array iteration, often preferred for readability.
+    2. Parameters: One for item, optional second for index.
+    3. Using return is similar to continue in traditional loops.
+    4. Not straightforward to break out of a forEach loop.
+    5. When you need to perform an action on each array element and don't need to break early.
+
+    Example:
+    // 60. For Each Loop
+                console.log('\n\n60. For Each Loop\n\n');
+
+                let foods = ['bread', 'rice', 'meat', 'pizza'];
+
+                foods.forEach(function(anyname) {
+                  console.log(anyname);
+                })
+
+                // Example:
+                let arr = ['Java', 'is', 'awesome'];
+
+                arr.forEach(function(hi) {
+                  console.log(hi);
+                })
+
+                // Or  as above is single statement
+                arr.forEach((hi) => console.log(hi))
+
+                // We CANNOT use forEach loop at some places
+
+        // Example:
+                // When we explicitly need the index of element, like in a search function.
+
+                let arr2 = [1, 2, 3, 4, 5, 6, 7, 999, 88];    // search for 7 and return index
+
+                function search(arr, num) {
+                  for(let i = 0; i < arr2.length; i++) {
+                    if(arr[i] === num) {
+                      console.log(`element found at: ${i} th position`);
+                      return ;
+                    }
+                  }
+                  console.log(`Element's not present in passed array`);
+                }
+
+                search(arr2, 789);
+
+                // Note: IN CASES where we have to return something early, we can't use forEach loop properly because return in forEach behaves like continue.
+
+                    // Example
+                    arr3 = [11, 21, 32, 44, 55, 86, 97, 999, 88];
+                    arr3.forEach(num => {
+                      if(num == 21) {
+                        return;   // Skips current iteration i.e. WORKS LIKE continue as we're in a function return stops it but for every other element function is called.
+                      }
+                      console.log(`visited ${num} th number`);
+                    })
+                    
+
+            // Note: Can't  break the loop suddenly using break
+
+            // If we ever wanna berak our loop in the middle WE SHOULDN'T USE forEach
+
+    <b id="6" class="bold">61. Array methods</b>
+
+    <img src="images/advance5.png">
+
+
+    1. Filter Method:
+        <span>• Syntax: array.filter((value, index) => return true/false)</span>
+        <span>• Use: Filters elements based on condition.</span>
+    2. Map Method:
+        <span>• Syntax: array.map((value) => return newValue)</span>
+        <span>• Use: Transforms each element.</span>
+
+
+    Example:
+    
+    // 61. Array methods
+    console.log('\n\n61. Array methods\n\n');
+    
+        // Filter Method:
+        // NOTE: Based on any condition if I have to retrive a subset from array I'll use filter() method.
+
+
+              let arrFilter1 = [1, 2, 3, 4, 5, 6, 7, 999, 88];
+                // let's say we want only odd nums we'll use filter which also will return an array
+              
+                let odds = arrFilter1.filter((num, index) => {
+                  if(num % 2 === 1) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                })
+                console.log(odds);
+
+                // As above function is anonymous and just single statement so we can skip things
+                let newOdds = arrFilter1.filter((num, index) => num % 2 === 1)
+                console.log(newOdds);
+
+
+              
+              
+        // Map Method:
+        // No. of elements remain same but transformed
+              
+              let arrMap1 = [1, 2, 3, 4, 5, 6, 7, 999, 88];
+
+                // Lets say we wanna squares of above array
+
+              let squaresMap = arrMap1.map(num => num * num)
+              console.log(squaresMap);
+    </pre>
+  </main>
+  <hr>
+  <footer>
+    “Whoever controls the media, the images, controls the culture.”
+  </footer>
+
+  <script>
+    // 56. Anonymous Functions As Values
+    console.log('\n\n56. Anonymous Functions As Values\n\n');
+
+    let sum = function(num1, num2) {
+      return num1 + num2;
+    };
+
+    // newSum is now a Reference to function sum, just like object references.
+    let newSum = sum;
+
+    console.log(sum(4, 5));
+    console.log(newSum(4, 5));
+
+        // Passing functions as an argument to another functions
+        // Example: We have a function to sum Two numbers but we need to find the sum of Three numbers.
+        // ((4 + 5) +7), so from sum() we can make such function
+
+        let sumThreeNumbers = function(num1, num2, num3, sumTwoNumbers) {
+          let sum1 = sumTwoNumbers(num1, num2);
+          return sumTwoNumbers(sum1, num3);
+        }
+
+        console.log(sumThreeNumbers(4 ,5 ,6, sum));
+
+        console.log(sumThreeNumbers);
+        console.log(typeof sumThreeNumbers);
+      
+    // 57. Arrow functions
+    console.log('\n\n57. Arrow functions\n\n')
+
+    let sums = function(n1, n2) {
+      return n1 + n2;
+    }
+    console.log(sums(6, 8));
+    // In above function we're writing function keyword to declare but we can use => symbol instead.
+
+    let Sum1 = (n1, n2) => {
+      return n1 + n2;
+    }
+    console.log(Sum1(6, 8));
+
+    //  OR when its single line statement we can directly return
+
+    let Sum2 = (n1, n2) => n1 + n2;
+    console.log(Sum2(6, 8));
+
+    // Example: 
+    let square = num => num * num;
+
+    console.log(square(6));
+
+
+    // 58. setTimeout & setInterval
+    console.log('\n\n58. setTimeout & setInterval\n\n');
+
+    // In this process function Executed only once.
+    // setTimeout(function, time in milli-seconds);
+
+
+                // We can separetely define function then pass as argument along with time in milli-seconds.
+                let alarm = function() {
+                  console.log(`What's your story morning glory ? ${new Date()}`);
+                }
+
+                setTimeout(alarm, 2000);
+
+                // Or we can define the function directly inside setTimeout(function, time)
+
+                setTimeout(function() {
+                  console.log(`Kaley Cuoco`);
+                }, 3000);
+
+                // Example:
+
+                // We can skip brackets also only in case of SINGLE Argument
+                // () => console.log(` I am arrow function with setTimeout.`);
+                
+                setTimeout(() => console.log(` I am arrow function with setTimeout.`), 2000); 
+                // If above function is last the after compilation it's gonna get EXECUTED First.
+
+                // NOTE : setTimeout() returns timerId
+                
+                // Suppose we wanna cancel setTimeout we can do that by using timerId
+                      
+                      let timerId = setTimeout(alarm, 10000);   // 10 seconds
+                      console.log(`Alarm set with timerId : ${timerId}`);
+                      // Let's say I wanna end setTimeout()     before 10 seconds, we can do that using 
+                      // timerId in  clearTimeout(timerID)
+
+                      clearTimeout(timerId);
+
+    // setInterval (function, time in milli-seconds);
+
+                // In this process will be EXECUTED everytime after the interval.            
+                // setInterval(alarm, 1000); // After every 1 second this will execute.
+
+                // To cancel setInterval
+                
+                let intervalID = setInterval(alarm, 1000);
+                // clearInterval(intervalID);
+
+                // MORE CREATIVE WAY: 
+                setTimeout(() => clearInterval(intervalID), 5000);
+
+
+    // 59. Event Listener
+    console.log('\n\n59. Event Listener\n\n');
+
+              // addEventListener("EventType", anonymousFunction(info about the event in {object} form))
+              
+              let buttonElement = document.querySelector('#my-button');
+
+              buttonElement.addEventListener('click', event => console.log('\n\nI am Clicked\n\n'));
+
+              // Or
+              let behaviour = () => {
+                console.log('I');
+                console.log('am ');
+                console.log('the GREATEST');
+              }           
+              buttonElement.addEventListener('click', behaviour);
+
+              // On a single Event we can have multiple functions separately.
+
+              let printDate = () => console.log(new Date());
+              buttonElement.addEventListener('click', printDate);
+
+              // When our work is finished with the addEventListener()  we can REMOVE it using:--
+              // Note : addEventListener() and removeEventListener() are not general functions, they must be used with Elements.
+
+    // removeEventListener('EventType',  functionToRemove);
+
+              buttonElement.removeEventListener('click', behaviour);
+
+              // Note: WE CANNOT REMOVE A FUNCTION WITHOUT reference. i.e. If we define inside addEventListener()
+
+              // There are Various types of event listreners see MDN Reference
+
+    // 60. For Each Loop
+    console.log('\n\n60. For Each Loop\n\n');
+
+    let foods = ['bread', 'rice', 'meat', 'pizza'];
+
+    foods.forEach(function(anyname) {
+      console.log(anyname);
+    })
+
+    // Example:
+    let arr = ['Java', 'is', 'awesome'];
+
+    arr.forEach(function(hi) {
+      console.log(hi);
+    })
+
+    // Or  as above is single statement
+    arr.forEach((hi) => console.log(hi))
+
+    // We CANNOT use forEach loop at some places
+
+        // Example:
+        // When we explicitly need the index of element, like in a search function.
+
+        let arr2 = [1, 2, 3, 4, 5, 6, 7, 999, 88];    // search for 7 and return index
+
+        function search(arr, num) {
+          for(let i = 0; i < arr2.length; i++) {
+            if(arr[i] === num) {
+              console.log(`element found at: ${i} th position`);
+              return ;
+            }
+          }
+          console.log(`Element's not present in passed array`);
+        }
+
+        search(arr2, 789);
+
+        // Note: IN CASES where we have to return something early, we can't use forEach loop properly because return in forEach behaves like continue.
+
+            // Example
+            arr3 = [11, 21, 32, 44, 55, 86, 97, 999, 88];
+            arr3.forEach(num => {
+              if(num == 21) {
+                return;   // Skips current iteration i.e. WORKS LIKE continue as we're in a function return stops it but for every other element function is called.
+              }
+              console.log(`visited ${num} th number`);
+            })
+            
+
+            // Note: Can't  break the loop suddenly using break
+
+            // If we ever wanna berak our loop in the middle WE SHOULDN'T USE forEach
+
+
+    // 61. Array methods
+    console.log('\n\n61. Array methods\n\n');
+    
+        // Filter Method:
+        // NOTE: Based on any condition if I have to retrive a subset from array I'll use filter() method.
+
+
+              let arrFilter1 = [1, 2, 3, 4, 5, 6, 7, 999, 88];
+                // let's say we want only odd nums we'll use filter which also will return an array
+              
+                let odds = arrFilter1.filter((num, index) => {
+                  if(num % 2 === 1) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                })
+                console.log(odds);
+
+                // As above function is anonymous and just single statement so we can skip things
+                let newOdds = arrFilter1.filter((num, index) => num % 2 === 1)
+                console.log(newOdds);
+
+
+              
+              
+        // Map Method:
+        // No. of elements remain same but transformed
+              
+              let arrMap1 = [1, 2, 3, 4, 5, 6, 7, 999, 88];
+
+                // Lets say we wanna squares of above array
+
+              let squaresMap = arrMap1.map(num => num * num)
+              console.log(squaresMap);
+              
+  </script>   
+</body>
+</html>
+
+<!-- 
+
+This will stop all intervals, can't stop specific interval without knowing its ID of course.
+
+
+window.onload = function() {
+    window.setInterval(function() {
+        document.getElementById("Tick").innerHTML += "tick<br />";
+    }, 1000);
+    window.setInterval(function() {
+        document.getElementById("Tack").innerHTML += "tack<br />";
+    }, 1000);
+};
+
+function ClearAllIntervals() {
+    for (var i = 1; i < 99999; i++)
+        window.clearInterval(i);
+}
+#Placeholder div { width: 80px; float: left; }
+<button type="button" onclick="ClearAllIntervals();">Clear All</button>
+<div id="Placeholder">
+    <div id="Tick"></div>
+    <div id="Tack"></div>
+</div>
+
+-->

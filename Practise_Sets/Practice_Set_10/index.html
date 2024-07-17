@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice_Set_10</title>
+  <style>
+    h1 {
+      text-align: center;
+      line-height: 40px;
+      
+    }
+
+    #align {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+
+      height: 400px;
+      width:100%
+    }
+    .my-button {
+      height: 100px;
+      width: 200px;
+
+      padding: 20px;
+      margin: 50px;
+
+      border-radius: 10px;
+      border: none;
+      background-color: rgb(154, 110, 197);
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+
+    .transition {
+    /* transition property 
+    transition: all;
+    transition-duration: 1s ;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s; */
+    transition: transform 2s ease;
+    }
+
+    /* .transition:active {
+      height: 200px;
+      width: 400px;
+    } */
+
+  
+  </style>
+</head>
+<body>
+
+  <h1> 
+    This button will double in size after clicking (using onclick = "").
+  </h1>
+  <div id="align">
+    <button id="b1" class="my-button transition" onclick="doubleButton()
+    resetButton();
+    ">Click me</button>
+  </div>
+  <h1> 
+    This button will double in size after clicking (addEventListener()).
+  </h1>
+  <div id="align">
+    <button id="b2" class="my-button">Click me</button>
+  </div>
+
+  <script>
+    // 1. Create a variable multiply and assign a function to this variable that multiplies two numbers. 
+    // Call this method from the variable.
+
+    let multiply = (num1, num2) => num1 * num2;
+    console.log(multiply(25, 5));
+    
+    // 2. Create a function runTwice that takes a function as a parameter and then runs that method twice.
+
+    // Example: 1
+        // let runTwice = (num, sqr) => {
+        //   let squareOfNum = sqr(num);
+        //   return sqr(squareOfNum);
+        // }
+
+        // let squares = num => num * num;
+
+        // console.log(runTwice(5, squares));
+
+    // Example: 2
+    let greet = () => console.log('Hey, how are you ?');
+
+    let runTwice = inpFunction => {
+      inpFunction();
+      inpFunction();
+    }
+    console.log(runTwice(greet));
+
+
+    // 3. Create a button which should grow double in size on clicking after 2 seconds.
+    
+    function doubleButton() {
+      console.log(`I am clicked`);
+
+      // Disable the button temporarily to prevent multiple clicks
+      document.querySelector('#b1').disabled = true;
+
+      // timeout to double after 2 second
+      setTimeout(function() {
+        let buttonElmt = document.querySelector('#b1');
+        buttonElmt.style.transform = 'scale(2)';  // Size Doubled
+        buttonElmt.disabled = false; // Re-enable the button
+      } , 2000);
+    }
+
+    let resetButton = () => {
+
+     setTimeout(function() {
+      let buttonElmt = document.querySelector('#b1');
+     buttonElmt.style.transform = 'scale(1)';  // Size original
+     }, 3000);
+    }
+
+    // 4. In the above exercise add the behavior using an event listener instead of onclick.
+
+
+    let buttonElement = document.querySelector('#b2');
+
+    buttonElement.addEventListener('click', event => {
+      console.log(`I am clicked`);
+      buttonElement.style.transform = `scale(2)`;
+    })
+
+    // 5. Create a function that sums an array of numbers. Do this using a for-each loop.
+
+    let arr = [11, 33, 44, 54, 65, 345, 1000];
+
+    let sum = 0;
+    arr.forEach(num => {
+      sum += num;
+    })
+    console.log(sum);
+
+
+    // 6. Create a function that takes an array of numbers and return their squares using map function.
+
+    // Let's find the squares of 5 prime numbers
+
+    function isPrime() {
+      if (num <= 1) return false;
+      if (num === 2) return true;
+      if (num % 2 === 0) return false;
+
+      // sq root of num
+      let sqrtNum = Math.sqrt(num);
+
+      // Checking odd factors from 3 to sqrtNum
+
+      for(let i = 3; i <= sqrtNum; i +=2) {
+        if (num % i === 0) return false;
+      }
+
+      return true;
+    }
+
+    let count = 0;
+    let num = 13;
+    let arrPrime = [];
+
+    while(true) {
+      if (isPrime(num)){
+        arrPrime.push(num);
+        count++;
+      }
+      if(count === 5) break;
+      num++;
+    }
+    console.log("Exited after counting 5 prime numbers.");
+    console.log(`We need to find the squares of array elements ${arrPrime}`);
+
+    arrPrimeSquares = arrPrime.map(num => num * num);
+    console.log(arrPrimeSquares);
+
+
+
+  </script>
+</body>
+</html>
+
+<!-- 
+
+document.querySelector('.grow-button').disabled = true;   // To disable the button temporarily to prevent multiple clicks
+
+
+button.disabled = false; // Re-enable the button
+
+-->

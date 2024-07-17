@@ -5,24 +5,27 @@
   box-sizing: border-box;
   font-weight: 500;
 }
-.nav-bar {
-  padding: 10px;
-  width: 100%;
+
+
+
+.nav_bar {
   display: flex;
+  width: 100%;
+  padding: 10px;
   justify-content: space-around;
   align-items: center;
 }
-.nav-bar a {
+
+.nav_bar a {
   text-decoration: none;
-  font-size: 14px;
-  letter-spacing: .3px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: bold;
   text-transform: uppercase;
   padding: 28px 0;
-  border-bottom: 3px solid #ffffff; /* To stop the movement of i.e. resizing */
+  border-bottom: 3px solid white;
 }
-.nav-bar a:hover {
-  border-bottom: 3px solid #f54e77;
+.nav_bar a:hover {
+  border-bottom: 3px solid hotpink ;
 }
 
 .bold {
@@ -31,11 +34,6 @@
   font-weight: bold;
   color: rgb(126, 72, 126);
 }
-/* pre {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
 span {
   font-size: 15px;
@@ -43,7 +41,7 @@ span {
   color: rgb(159, 93, 235);
   text-decoration: underline;
 }
-.footer{
+footer{
   width: 100%;
   border-top: 2px solid #282c3f;
   position: fixed;
@@ -51,37 +49,3 @@ span {
   text-align: center;
   background-color: #f54e77;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
